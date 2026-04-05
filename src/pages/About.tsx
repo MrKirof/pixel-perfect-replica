@@ -119,7 +119,7 @@ const About = () => {
               <div className="lg:col-span-7 flex flex-col justify-center">
                 <div className="text-muted-foreground font-body text-base md:text-lg leading-relaxed space-y-6">
                   <p>
-                    Founded in 2013, MR Kirof started as a solo design studio with one belief:
+                    Founded in 2013, Kirof started as a solo design studio with one belief:
                     <span className="text-foreground font-semibold"> great work changes how people see a business.</span> Today
                     we're a 20-person remote team delivering across 11 disciplines, from brand identity
                     and web development to financial management and editorial design.
