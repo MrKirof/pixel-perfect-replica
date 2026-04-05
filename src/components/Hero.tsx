@@ -60,7 +60,7 @@ const Hero = () => {
         </div>
 
         {/* Main heading. massive, left-aligned */}
-        <h1 className="font-display font-extrabold text-left leading-[0.9] tracking-tight mb-6 md:mb-8 max-w-4xl text-3xl md:text-4xl">
+        <h1 className="font-display font-extrabold text-left leading-[0.9] tracking-tight mb-6 md:mb-8 max-w-4xl text-4xl md:text-5xl">
           <span className={`block overflow-hidden`}>
             <span className={`block transition-all duration-700 ease-out text-white ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}`} style={{ transitionDelay: "0.15s" }}>
               <TextScramble text="We craft brands" delay={200} />
@@ -116,7 +116,7 @@ const Hero = () => {
           <MarqueeStrip speed={60}>
             <div className="flex items-center mr-0">
               {clients.map((c, i) => {
-                const sizes = ["text-xs", "text-[12px]", "text-xs", "text-[13px]", "text-xs"];
+                const sizes = ["text-xs", "text-xs", "text-xs", "text-xs", "text-xs"];
                 return (
                   <span key={i} className="flex items-center gap-8">
                     <span className={`font-mono ${sizes[i % sizes.length]} uppercase tracking-[0.25em] text-white/30 whitespace-nowrap transition-all duration-300 hover:text-accent hover:drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)] cursor-default`}>
