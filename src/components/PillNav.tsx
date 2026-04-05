@@ -110,10 +110,8 @@ const PillNav = ({
         gsap.to(logoEl, { scale: 1, duration: 0.6, ease });
       }
       if (navItems) {
-        gsap.set(navItems, { width: 0, overflow: 'hidden' });
-        gsap.to(navItems, { width: 'auto', duration: 0.6, ease, onComplete: () => {
-          gsap.set(navItems, { overflow: 'visible', width: 'auto' });
-        }});
+        gsap.set(navItems, { opacity: 0 });
+        gsap.to(navItems, { opacity: 1, duration: 0.6, ease });
       }
     }
 
