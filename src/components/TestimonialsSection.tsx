@@ -78,7 +78,9 @@ const TestimonialsSection = () => {
 
   return (
     <section className="relative py-20 md:py-32" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
-      <div className="hr-gradient mb-20" />
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 mb-16">
+        <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, #d0d0d0, transparent)' }} />
+      </div>
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
           {/* Left label */}
