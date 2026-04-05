@@ -60,7 +60,7 @@ const Hero = () => {
         </div>
 
         {/* Main heading. massive, left-aligned */}
-        <h1 className="font-display font-extrabold text-left leading-[0.9] tracking-tight mb-6 md:mb-8 max-w-4xl" style={{ fontSize: "2.25rem" }}>
+        <h1 className="font-display font-extrabold text-left leading-[0.9] tracking-tight mb-6 md:mb-8 max-w-4xl text-3xl md:text-4xl">
           <span className={`block overflow-hidden`}>
             <span className={`block transition-all duration-700 ease-out text-white ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}`} style={{ transitionDelay: "0.15s" }}>
               <TextScramble text="We craft brands" delay={200} />
