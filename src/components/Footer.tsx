@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUp } from "lucide-react";
-import { Suspense } from "react";
-import FooterWatch from "./FooterWatch";
+import { Button } from "./ui/button";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -12,142 +10,140 @@ const navLinks = [
   { label: "Contact", path: "/contact" },
 ];
 
+const socialLinks = [
+  { label: "Behance", href: "https://www.behance.net" },
+  { label: "LinkedIn", href: "https://www.linkedin.com" },
+];
+
+const watchMarkers = Array.from({ length: 12 }, (_, index) => {
+  const angle = index * 30;
+  const isPrimaryMarker = index % 3 === 0;
+
+  return {
+    angle,
+    width: isPrimaryMarker ? "w-1" : "w-0.5",
+    height: isPrimaryMarker ? "h-4" : "h-3",
+  };
+});
+
 const Footer = () => (
-  <footer className="relative" style={{ backgroundColor: '#f5f5f5', color: '#1a1a1a' }}>
-    <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 py-16 md:py-20">
-      {/* Main content: Watch left, Info right */}
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 mb-14">
-        {/* LEFT: 3D Watch */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center">
-          <Suspense fallback={
-            <div className="w-full h-[350px] flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: '#ccc', borderTopColor: 'transparent' }} />
+  <footer className="surface relative border-t border-border/70 bg-background text-foreground">
+    <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 lg:px-16 lg:py-20">
+      <div className="grid gap-14 lg:grid-cols-[minmax(320px,0.9fr)_minmax(0,1.1fr)] lg:items-center">
+        <div className="flex justify-center lg:justify-start">
+          <div className="relative flex h-[360px] w-full max-w-[340px] items-center justify-center">
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-background via-card to-muted opacity-80 blur-2xl" />
+
+            <div className="relative h-[320px] w-[220px] rotate-[18deg]">
+              <div className="absolute left-1/2 top-0 h-[110px] w-[72px] -translate-x-1/2 rounded-[999px] bg-foreground shadow-2xl" />
+              <div className="absolute left-1/2 top-[210px] h-[110px] w-[72px] -translate-x-1/2 rounded-[999px] bg-foreground shadow-2xl" />
+              <div className="absolute left-1/2 top-[86px] h-7 w-24 -translate-x-1/2 rounded-full bg-foreground/90" />
+              <div className="absolute left-1/2 top-[208px] h-7 w-24 -translate-x-1/2 rounded-full bg-foreground/90" />
+
+              <div className="absolute left-1/2 top-1/2 h-[188px] w-[188px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-background via-card to-muted p-3 shadow-2xl ring-1 ring-border/70">
+                <div className="relative h-full w-full rounded-full bg-foreground shadow-inner shadow-background/10">
+                  <div className="absolute inset-[14px] rounded-full border border-border/30" />
+                  <div className="absolute inset-[22px] rounded-full bg-gradient-to-b from-foreground via-foreground to-secondary/80" />
+                  <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-background shadow-sm" />
+                  <div className="absolute left-1/2 top-7 h-4 w-[1px] -translate-x-1/2 rounded-full bg-background/70" />
+
+                  {watchMarkers.map((marker) => (
+                    <span
+                      key={marker.angle}
+                      className={`absolute left-1/2 top-1/2 origin-center -translate-x-1/2 -translate-y-[72px] rounded-full bg-background ${marker.width} ${marker.height}`}
+                      style={{ transform: `translate(-50%, -72px) rotate(${marker.angle}deg)` }}
+                    />
+                  ))}
+
+                  <div className="absolute left-1/2 top-1/2 h-14 w-1 -translate-x-1/2 -translate-y-[48px] rounded-full bg-background" />
+                  <div className="absolute left-1/2 top-1/2 h-20 w-1 -translate-x-1/2 -translate-y-[68px] rounded-full bg-background/80 rotate-[55deg]" />
+                  <div className="absolute right-[-10px] top-1/2 h-10 w-4 -translate-y-1/2 rounded-r-full bg-gradient-to-b from-card to-muted ring-1 ring-border/70" />
+                  <div className="absolute right-[34px] top-[38px] h-16 w-10 rounded-full bg-background/10 blur-xl" />
+                </div>
+              </div>
             </div>
-          }>
-            <FooterWatch />
-          </Suspense>
+          </div>
         </div>
 
-        {/* RIGHT: Navigation + Connect + Info */}
-        <div className="w-full lg:w-1/2 flex flex-col gap-10">
-          {/* Navigation */}
-          <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: '#999' }}>
+        <div className="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <section>
+            <h4 className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
               Navigation
             </h4>
-            <nav className="flex flex-wrap gap-2">
+            <nav className="grid gap-3" aria-label="Footer navigation">
               {navLinks.map((item) => (
                 <Link
                   key={item.label}
                   to={item.path}
-                  className="font-body text-sm px-4 py-2 rounded-full transition-all duration-200"
-                  style={{ color: '#555', backgroundColor: 'transparent' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#e8e8e8'; e.currentTarget.style.color = '#1a1a1a'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#555'; }}
+                  className="group relative inline-flex w-fit pb-1 text-sm text-foreground/80 transition-colors duration-300 hover:text-foreground"
                   data-cursor-hover
                 >
                   {item.label}
+                  <span className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
                 </Link>
               ))}
             </nav>
-          </div>
+          </section>
 
-          {/* Connect */}
-          <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: '#999' }}>
-              Connect
-            </h4>
-            <div className="flex items-center gap-2">
+          <div className="space-y-8">
+            <section>
+              <h4 className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                Connect
+              </h4>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-full border border-border bg-background px-5 py-2.5 text-sm text-foreground/80 transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background"
+                    data-cursor-hover
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h4 className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                Email
+              </h4>
               <a
-                href="https://www.behance.net"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-sm px-5 py-2 rounded-full transition-all duration-200"
-                style={{ color: '#555', border: '1px solid #d0d0d0' }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#d0d0d0'; }}
+                href="mailto:hello@mrkirof.com"
+                className="text-base text-foreground transition-colors duration-300 hover:text-primary"
                 data-cursor-hover
               >
-                Behance
+                hello@mrkirof.com
               </a>
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-sm px-5 py-2 rounded-full transition-all duration-200"
-                style={{ color: '#555', border: '1px solid #d0d0d0' }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#d0d0d0'; }}
-                data-cursor-hover
-              >
-                LinkedIn
-              </a>
-            </div>
-          </div>
+            </section>
 
-          {/* Email */}
-          <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3" style={{ color: '#999' }}>
-              Email
-            </h4>
-            <a
-              href="mailto:hello@mrkirof.com"
-              className="font-body text-base transition-colors duration-200"
-              style={{ color: '#333' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'hsl(217, 92%, 60%)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#333'; }}
-              data-cursor-hover
-            >
-              hello@mrkirof.com
-            </a>
-          </div>
+            <section className="flex items-center gap-3">
+              <span className="relative flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-success" />
+              </span>
+              <span className="text-sm text-foreground/75">Currently accepting projects</span>
+            </section>
 
-          {/* Availability */}
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: '#22c55e' }}></span>
-              <span className="relative inline-flex rounded-full h-3 w-3" style={{ backgroundColor: '#22c55e' }}></span>
-            </span>
-            <span className="font-body text-sm" style={{ color: '#555' }}>
-              Currently accepting projects
-            </span>
-          </div>
-
-          {/* Start a Project CTA */}
-          <div>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 font-display font-bold text-sm pl-8 pr-4 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg group"
-              style={{ backgroundColor: 'hsl(217, 92%, 60%)', color: '#fff' }}
-              data-cursor-hover
-            >
-              Start a Project
-              <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
+            <Button asChild size="lg" className="h-12 w-fit rounded-full px-7 font-display text-sm font-bold">
+              <Link to="/contact" data-cursor-hover>
+                Start a Project
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/20 transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
 
-      {/* Bottom row */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8" style={{ borderTop: '1px solid #e0e0e0' }}>
-        <p className="text-xs font-mono" style={{ color: '#999' }}>
-          © {new Date().getFullYear()} All rights reserved. Crafted with obsession.
+      <div className="mt-14 flex flex-col gap-4 border-t border-border/70 pt-8 md:flex-row md:items-center md:justify-between">
+        <p className="text-sm text-muted-foreground">© 2026 All rights reserved. Crafted with obsession.</p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+          REMOTE-FIRST · EST. 2013
         </p>
-        <div className="flex items-center gap-6">
-          <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: '#bbb' }}>
-            REMOTE-FIRST · EST. 2013
-          </span>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
-            style={{ border: '1px solid #d0d0d0', color: '#888' }}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#888'; e.currentTarget.style.borderColor = '#d0d0d0'; }}
-            data-cursor-hover
-          >
-            <ArrowUp size={14} />
-          </button>
-        </div>
       </div>
     </div>
   </footer>

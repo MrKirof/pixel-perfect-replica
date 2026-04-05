@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import TextScramble from "@/components/TextScramble";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import HeroScene from "@/components/HeroScene";
-import AnimatedPlanet from "@/components/AnimatedPlanet";
 
 const clients = [
   "Lumara", "Veltro", "Noxian", "Starkline", "Crestfield",
@@ -40,8 +39,14 @@ const Hero = () => {
         }} />
       </div>
 
-      {/* 3D Animated Planet. pushed to right side */}
-      <AnimatedPlanet />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] hidden w-[46vw] overflow-hidden lg:block" aria-hidden="true">
+        <div className="absolute right-[10%] top-[14%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-accent/20 via-accent/5 to-transparent blur-3xl" />
+        <div className="absolute right-[18%] top-[18%] h-[320px] w-[320px] rounded-full border border-white/10 bg-card/10 shadow-[0_0_80px_hsl(var(--accent)/0.08)] backdrop-blur-[2px]" />
+        <div className="absolute right-[18%] top-[18%] h-[320px] w-[320px] rounded-full border border-white/5" style={{ clipPath: "ellipse(50% 28% at 50% 50%)", transform: "rotate(-18deg)" }} />
+        <div className="absolute right-[27%] top-[30%] h-3 w-3 rounded-full bg-accent/80 shadow-[0_0_22px_hsl(var(--accent)/0.65)]" />
+        <div className="absolute right-[35%] top-[24%] h-1.5 w-1.5 rounded-full bg-white/70" />
+        <div className="absolute right-[14%] top-[46%] h-2 w-2 rounded-full bg-white/40" />
+      </div>
 
       {/* Content. left-aligned editorial layout */}
       <div className="relative z-10 flex-1 flex flex-col justify-end pb-[22vh] sm:pb-[18vh] md:pb-[14vh]">
