@@ -267,6 +267,7 @@ const ServicesSection = () => {
   );
 };
 
+const Index = () => {
 
   return (
     <PageTransition>
