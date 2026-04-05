@@ -220,6 +220,12 @@ const PillNav = ({
           </ul>
         </div>
 
+        {ctaLabel && ctaHref && (
+          <Link to={ctaHref} className="pill-cta desktop-only">
+            {ctaLabel}
+          </Link>
+        )}
+
         <button
           className="mobile-menu-button mobile-only"
           onClick={toggleMobileMenu}
