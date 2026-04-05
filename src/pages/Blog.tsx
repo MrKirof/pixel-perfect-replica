@@ -147,7 +147,7 @@ const Blog = () => {
               <span className="text-gradient">insights</span>
             </h1>
             <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed max-w-xl">
-              Thoughts on design, development, finance, and building things that last. from the team at MR Kirof.
+              Thoughts on design, development, finance, and building things that last — from the team at Kirof.
             </p>
           </motion.div>
         </div>

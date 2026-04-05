@@ -1,137 +1,100 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowUp, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import MarqueeStrip from "@/components/MarqueeStrip";
+import { ArrowUp } from "lucide-react";
 
 const footerLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Services", path: "/services" },
   { label: "Work", path: "/work" },
-  { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];
 
-const socials = [
-  { label: "X / Twitter", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "Behance", href: "#" },
-  { label: "Dribbble", href: "#" },
-  { label: "LinkedIn", href: "#" },
-];
-
 const Footer = () => (
-  <footer className="relative overflow-hidden">
-    {/* Pre-footer CTA band */}
-    <div className="border-t border-accent/50">
-      <div className="py-8 overflow-hidden border-b border-border">
-        <MarqueeStrip speed={20}>
-          <div className="flex items-center gap-16 mr-16">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <span key={i} className="font-display text-[8vw] font-extrabold text-foreground/[0.03] uppercase whitespace-nowrap leading-none">
-                Design · Develop · Deliver ·
-              </span>
-            ))}
-          </div>
-        </MarqueeStrip>
-      </div>
-    </div>
-
-    <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 py-20 md:py-24">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
-        {/* Brand column */}
-        <div className="md:col-span-5">
-          <h3 className="font-display text-5xl md:text-6xl font-extrabold text-foreground mb-4 tracking-tight leading-[0.9]">
-            MR<span className="text-accent">.</span>KIROF
+  <footer className="relative" style={{ backgroundColor: '#f5f5f5', color: '#1a1a1a' }}>
+    <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 py-16 md:py-20">
+      {/* Top row: Logo + CTA */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-14">
+        <div>
+          <h3 className="font-display text-3xl font-extrabold tracking-tight" style={{ color: '#1a1a1a' }}>
+            Kirof<span style={{ color: 'hsl(217, 92%, 60%)' }}>.</span>
           </h3>
-          <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-xs mb-8">
-            A 20-person remote studio delivering design, development, and financial clarity across 11 disciplines.
+          <p className="text-sm mt-2 max-w-xs" style={{ color: '#666' }}>
+            Remote-first creative agency delivering design, development, and financial clarity.
           </p>
-          <Link
-            to="/contact"
-            className="magnetic-btn inline-flex items-center gap-3 bg-accent text-accent-foreground font-display font-bold text-sm px-8 py-4 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
+        </div>
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 font-display font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg"
+          style={{ backgroundColor: 'hsl(217, 92%, 60%)', color: '#fff' }}
+          data-cursor-hover
+        >
+          Start a Project
+        </Link>
+      </div>
+
+      {/* Middle: Nav + Socials */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-14" style={{ borderBottom: '1px solid #e0e0e0' }}>
+        <nav className="flex flex-wrap items-center gap-2">
+          {footerLinks.map((item) => (
+            <Link
+              key={item.label}
+              to={item.path}
+              className="font-body text-sm px-4 py-2 rounded-full transition-all duration-200"
+              style={{ color: '#555', backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#e8e8e8'; e.currentTarget.style.color = '#1a1a1a'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#555'; }}
+              data-cursor-hover
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex items-center gap-2">
+          <a
+            href="https://www.behance.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-sm px-5 py-2 rounded-full transition-all duration-200"
+            style={{ color: '#555', border: '1px solid #d0d0d0' }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#d0d0d0'; }}
             data-cursor-hover
-            data-cursor-label="Let's Talk"
           >
-            Start a Project
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        {/* Navigation */}
-        <div className="md:col-span-3">
-          <h4 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8">
-            Navigation
-          </h4>
-          <div className="flex flex-col gap-0">
-            {footerLinks.map((item, i) => (
-              <Link
-                key={item.label}
-                to={item.path}
-                className="group flex items-center justify-between py-3 border-b border-border/20 hover:border-accent/30 transition-all duration-300 hover:pl-2"
-                data-cursor-hover
-              >
-                <span className="flex items-center gap-3">
-                  <span className="font-mono text-[9px] text-muted-foreground/30">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-foreground/50 group-hover:text-foreground transition-colors font-body text-sm">{item.label}</span>
-                </span>
-                <ArrowUpRight size={10} className="text-muted-foreground/20 group-hover:text-accent transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Social + Contact */}
-        <div className="md:col-span-4">
-          <h4 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8">
-            Connect
-          </h4>
-          <div className="flex flex-col gap-0 mb-10">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="group flex items-center justify-between py-3 border-b border-border/20 hover:border-accent/30 transition-all duration-300 hover:pl-2"
-                data-cursor-hover
-              >
-                <span className="text-foreground/50 group-hover:text-accent transition-colors font-body text-sm">{s.label}</span>
-                <ArrowUpRight size={10} className="text-muted-foreground/20 group-hover:text-accent transition-all duration-300" />
-              </a>
-            ))}
-          </div>
-
-          <div className="space-y-3">
-            <div>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/40">Email</span>
-              <p className="font-body text-sm text-foreground/60 mt-0.5">hello@mrkirof.com</p>
-            </div>
-            <div>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/40">Availability</span>
-              <p className="font-body text-sm text-foreground/60 mt-0.5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                Currently accepting projects
-              </p>
-            </div>
-          </div>
+            Behance
+          </a>
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-sm px-5 py-2 rounded-full transition-all duration-200"
+            style={{ color: '#555', border: '1px solid #d0d0d0' }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#555'; e.currentTarget.style.borderColor = '#d0d0d0'; }}
+            data-cursor-hover
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
 
-      <div className="hr-gradient mb-8" />
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-muted-foreground text-xs font-mono">
-          © 2026 MR Kirof. Crafted with obsession.
+      {/* Bottom row */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
+        <p className="text-xs font-mono" style={{ color: '#999' }}>
+          © {new Date().getFullYear()} Kirof. Crafted with obsession.
         </p>
-        <div className="flex items-center gap-8">
-          <span className="text-muted-foreground/30 text-[9px] font-mono uppercase tracking-widest">
+        <div className="flex items-center gap-6">
+          <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: '#bbb' }}>
             Remote-first · Est. 2013
           </span>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="magnetic-btn w-12 h-12 border border-border flex items-center justify-center hover:border-accent hover:bg-accent hover:text-accent-foreground transition-all duration-500 group"
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
+            style={{ border: '1px solid #d0d0d0', color: '#888' }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#1a1a1a'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#888'; e.currentTarget.style.borderColor = '#d0d0d0'; }}
             data-cursor-hover
-            data-cursor-label="Top"
           >
-            <ArrowUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUp size={14} />
           </button>
         </div>
       </div>

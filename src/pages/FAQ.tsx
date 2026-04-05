@@ -17,7 +17,7 @@ const faqs = [
     items: [
       { q: "Do you work with startups or only established brands?", a: "Both — and everything in between. We've helped 40+ startups launch from scratch and rebranded Fortune-adjacent companies. Whether you're pre-seed or scaling past $10M ARR, we adapt our process to your stage." },
       { q: "Can I hire you for just one service?", a: "Absolutely. Need a single logo, one motion reel, or a killer Excel dashboard? Done. But most clients start with one service and end up bundling 3–4 because they see the quality difference across disciplines." },
-      { q: "What makes MR Kirof different?", a: "We're a full-service IT agency that handles everything under one roof: web development, app builds, UI/UX design, branding, motion graphics, and digital strategy. No outsourcing, no freelancer handoffs. Your project stays with our in-house team from start to finish, so every piece works together seamlessly. That's how we've delivered 3000+ projects without a single missed deadline." },
+      { q: "What makes Kirof different?", a: "We're a full-service IT agency that handles everything under one roof: web development, app builds, UI/UX design, branding, motion graphics, and digital strategy. No outsourcing, no freelancer handoffs. Your project stays with our in-house team from start to finish, so every piece works together seamlessly. That's how we've delivered 3000+ projects without a single missed deadline." },
     ],
   },
   {
