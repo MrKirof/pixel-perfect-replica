@@ -24,11 +24,12 @@ const Footer = () => (
         </div>
         <Link
           to="/contact"
-          className="inline-flex items-center gap-2 font-display font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg"
+          className="inline-flex items-center gap-2 font-display font-bold text-sm pl-8 pr-4 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg group"
           style={{ backgroundColor: 'hsl(217, 92%, 60%)', color: '#fff' }}
           data-cursor-hover
         >
           Start a Project
+          <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">→</span>
         </Link>
       </div>
 
