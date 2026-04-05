@@ -1,0 +1,56 @@
+.star-border-container {
+  --star-border-color: hsl(var(--accent));
+  --star-border-speed: 6s;
+  --star-border-thickness: 1px;
+  position: relative;
+  display: block;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--star-border-thickness);
+}
+
+.star-border-container::before {
+  content: "";
+  position: absolute;
+  inset: -140%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 300deg,
+      var(--star-border-color) 318deg 336deg,
+      transparent 354deg 360deg
+    ),
+    conic-gradient(
+      from 180deg,
+      transparent 0deg 300deg,
+      var(--star-border-color) 318deg 336deg,
+      transparent 354deg 360deg
+    );
+  animation: starBorderSpin var(--star-border-speed) linear infinite;
+  will-change: transform;
+}
+
+.star-border-surface {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  border-radius: inherit;
+}
+
+@keyframes starBorderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-border-container::before {
+    animation-duration: 20s;
+  }
+}
