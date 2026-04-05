@@ -39,7 +39,7 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2013", title: "Founded", desc: "Marcus Riley launches MR Kirof as a solo brand design studio." },
+  { year: "2013", title: "Founded", desc: "Marcus Riley launches Kirof as a solo brand design studio." },
   { year: "2015", title: "First 50 Clients", desc: "Expanded to web development. Hired the first 3 team members." },
   { year: "2018", title: "11 Services", desc: "Full-service offering complete. from brand to finance. Team of 12." },
   { year: "2020", title: "Fully Remote", desc: "Transitioned to remote-first. Hired across 3 continents." },
