@@ -317,10 +317,6 @@ const Index = () => {
       </section>
       </FadeInSection>
 
-      {/* ═══════════════════════════ FOUNDER ═══════════════════════════ */}
-      <FadeInSection style="fade">
-      <FounderSpotlight />
-      </FadeInSection>
 
       {/* ═══════════════════════════ SERVICES ═══════════════════════════ */}
       <FadeInSection style="scale">
