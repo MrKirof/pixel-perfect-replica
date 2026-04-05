@@ -68,9 +68,9 @@ const Hero = () => {
           </span>
           <span className={`block transition-all duration-700 ease-out ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}`} style={{ transitionDelay: "0.3s" }}>
             <span className="text-white"><TextScramble text="that " delay={400} /></span>
-            <span className="text-accent"><TextScramble text="speak" delay={500} /></span>
-            <span className="text-white"><TextScramble text=" & " delay={600} /></span>
-            <span className="text-accent"><TextScramble text="sell" delay={700} /></span>
+            <span className="hero-gradient-text"><TextScramble text="speak" delay={500} /></span>
+            <span className="hero-gradient-text"><TextScramble text=" & " delay={600} /></span>
+            <span className="hero-gradient-text"><TextScramble text="sell" delay={700} /></span>
           </span>
         </h1>
 
