@@ -81,11 +81,11 @@ const Footer = () => (
       {/* Bottom row */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
         <p className="text-xs font-mono" style={{ color: '#999' }}>
-          © {new Date().getFullYear()} Kirof. Crafted with obsession.
+          © {new Date().getFullYear()} All rights reserved. Crafted with obsession.
         </p>
         <div className="flex items-center gap-6">
           <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: '#bbb' }}>
-            Remote-first · Est. 2013
+            REMOTE-FIRST · EST. 2013
           </span>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
