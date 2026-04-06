@@ -2,6 +2,8 @@ import { ArrowRight, ArrowUpRight, Globe, Users, Award, Trophy, Heart, Target, R
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
+import marefulImg1 from "@/assets/mareful-kirof-1.jpg";
+import marefulImg2 from "@/assets/mareful-kirof-2.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
@@ -19,7 +21,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 );
 
 const team = [
-  { name: "Mareful Kirof", role: "Founder & COO", handle: "marefulkirof", bio: "Founder and chief operations officer. Built Kirof from the ground up and oversees every aspect of the agency's operations and growth.", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)" },
+  { name: "Mareful Kirof", role: "Founder & COO", handle: "marefulkirof", bio: "Founder and chief operations officer. Built Kirof from the ground up and oversees every aspect of the agency's operations and growth.", image: marefulImg1, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)" },
   { name: "Sophia Chen", role: "Creative Director", handle: "sophiachen", bio: "10+ years shaping brands that win awards and hearts. Previously led design at two Y Combinator startups.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
   { name: "James Okafor", role: "Chief Financial Officer", handle: "jamesokafor", bio: "CPA with expertise in startup finance. Manages $8M+ in client revenue and internal operations.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #064e3b8c 0%, #10b98144 100%)", glowColor: "rgba(16, 185, 129, 0.5)" },
   { name: "Mia Patel", role: "Brand & Identity Lead", handle: "miapatel", bio: "Turns complex brand challenges into elegant visual systems. 1500+ brand projects delivered.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #831843c0 0%, #ec489944 100%)", glowColor: "rgba(236, 72, 153, 0.5)" },
@@ -104,6 +106,103 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Founder Spotlight ── */}
+      <FadeIn>
+        <section className="relative py-16 md:py-24 overflow-hidden" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
+          {/* Ambient glow */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, hsl(var(--accent) / 0.08), transparent 60%)' }} />
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              {/* Images */}
+              <div className="lg:col-span-5">
+                <div className="relative">
+                  {/* Main image */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative z-10 overflow-hidden rounded-lg"
+                  >
+                    <img
+                      src={marefulImg2}
+                      alt="Mareful Kirof — Founder & COO"
+                      className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  </motion.div>
+                  {/* Secondary image — floating offset */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 30, y: 20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute -bottom-6 -right-6 md:-right-10 w-[45%] z-20 rounded-lg overflow-hidden border-2 border-background shadow-2xl"
+                  >
+                    <img
+                      src={marefulImg1}
+                      alt="Mareful Kirof"
+                      className="w-full aspect-square object-cover object-top"
+                    />
+                  </motion.div>
+                  {/* Decorative accent line */}
+                  <div className="absolute -left-4 top-8 w-1 h-24 bg-accent/40 rounded-full" />
+                </div>
+              </div>
+
+              {/* Text content */}
+              <div className="lg:col-span-7 pt-8 lg:pt-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: 0.15 }}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Founder</span>
+                    <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
+                  </div>
+                  <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
+                    Mareful <span className="text-gradient">Kirof</span>
+                  </h2>
+                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & Chief Operations Officer</p>
+                  <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
+                    <p>
+                      Built Kirof from the ground up in 2013 as a one-person design studio. Today, he leads a 20-person remote team across 3 continents, overseeing every aspect of the agency's operations and growth.
+                    </p>
+                    <p>
+                      His obsession with craft and zero-compromise approach to quality has delivered <span className="text-white font-semibold">3,000+ projects</span> without a single missed deadline — a record he takes personally.
+                    </p>
+                  </div>
+                  {/* Quick stats */}
+                  <div className="flex flex-wrap gap-6 mb-8">
+                    {[
+                      { value: "12+", label: "Years Leading" },
+                      { value: "1500+", label: "Clients Served" },
+                      { value: "0", label: "Deadlines Missed" },
+                    ].map((s) => (
+                      <div key={s.label} className="text-center">
+                        <span className="font-display text-2xl font-extrabold text-accent">{s.value}</span>
+                        <p className="font-mono text-xs uppercase tracking-wider text-white/30 mt-1">{s.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    to="/contact"
+                    className="magnetic-btn border border-white/20 text-white font-display text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 hover:border-accent hover:text-accent transition-all duration-500 group"
+                    data-cursor-hover
+                  >
+                    Work with Mareful
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeIn>
 
       {/* ── Story ── */}
       <FadeIn>
