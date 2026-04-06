@@ -27,7 +27,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 
 const serviceOptions = [
   "Logo & Brand Identity",
-  "UI/UX Design",
+  "Web & App Design",
   "Website & App Development",
   "Print & Editorial Design",
   "Merchandise Design",

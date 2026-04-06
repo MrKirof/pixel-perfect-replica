@@ -22,7 +22,7 @@ const services = [
     color: "217 92% 60%",
   },
   {
-    icon: Layout, title: "UI/UX Design", number: "02",
+    icon: Layout, title: "Web & App Design", number: "02",
     desc: "Intuitive, conversion-driven interfaces that look stunning and feel effortless.",
     longDesc: "We combine user psychology with aesthetic precision. Every screen is prototyped, tested, and iterated until the experience is seamless.",
     process: ["User Research & Personas", "Information Architecture", "High-Fidelity Design", "Usability Testing & Iteration"],

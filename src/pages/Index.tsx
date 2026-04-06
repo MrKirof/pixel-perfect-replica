@@ -55,7 +55,7 @@ const FadeInSection = ({ children, className = "", delay = 0, style = "fade" }: 
 
 const services = [
   { icon: Sparkles, title: "Brand & Identity", desc: "Brand systems that communicate personality, authority, and trust.", tags: ["Logo Design", "Brand Strategy", "Visual Identity"] },
-  { icon: Layout, title: "UI/UX Design", desc: "Conversion-driven interfaces that look stunning and feel effortless.", tags: ["User Research", "Wireframing", "Prototyping"] },
+  { icon: Layout, title: "Web & App Design", desc: "Conversion-driven interfaces that look stunning and feel effortless.", tags: ["User Research", "Wireframing", "Prototyping"] },
   { icon: Code, title: "Web & App Dev", desc: "Full-stack builds: React SPAs to CMS-powered websites.", tags: ["React", "Next.js", "Mobile Apps"] },
   { icon: Film, title: "Motion Graphics", desc: "Explainers, logo reveals, social reels, and broadcast content.", tags: ["Logo Reveals", "Reels", "Explainers"] },
   { icon: Video, title: "Video Production", desc: "End-to-end video — commercials, promos, interviews, and more.", tags: ["Commercials", "Promos", "Interviews"] },
