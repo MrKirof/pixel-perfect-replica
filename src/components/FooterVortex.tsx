@@ -33,6 +33,25 @@ const MetallicSphere = () => {
   );
 };
 
+/* ── Irregular rocky meteor geometry ── */
+const createMeteorGeo = (seed: number) => {
+  const geo = new THREE.IcosahedronGeometry(1, 2);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const rng1 = Math.sin(seed * 9301 + i * 4973) * 49297;
+    const rng2 = Math.sin(seed * 7919 + i * 6151) * 39119;
+    const f1 = 0.5 + (rng1 - Math.floor(rng1)) * 0.7;
+    const f2 = 0.8 + (rng2 - Math.floor(rng2)) * 0.4;
+    // Elongate along one axis for teardrop/irregular shape
+    const x = pos.getX(i) * f1 * 1.4;
+    const y = pos.getY(i) * f1 * f2 * 0.7;
+    const z = pos.getZ(i) * f1 * 0.8;
+    pos.setXYZ(i, x, y, z);
+  }
+  geo.computeVertexNormals();
+  return geo;
+};
+
 /* ── Single Meteor with glowing trail ── */
 const TRAIL_LENGTH = 80;
 
@@ -42,12 +61,14 @@ interface MeteorProps {
   speed: number;
   delay: number;
   size: number;
+  seed: number;
 }
 
-const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
+const Meteor = ({ startAngle, yStart, speed, delay, size, seed }: MeteorProps) => {
   const headRef = useRef<THREE.Group>(null);
   const trailMeshRef = useRef<THREE.Mesh>(null);
   const posHistory = useRef<THREE.Vector3[]>([]);
+  const rockGeo = useMemo(() => createMeteorGeo(seed), [seed]);
 
   // Create trail geometry (tube that follows meteor path)
   const trailGeo = useMemo(() => {
@@ -207,25 +228,29 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     <>
       {/* Meteor head */}
       <group ref={headRef}>
-        {/* White-hot core */}
-        <mesh scale={size * 0.5}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#fffef0" />
+        {/* Rocky irregular meteor body */}
+        <mesh geometry={rockGeo} scale={size * 0.7}>
+          <meshStandardMaterial
+            color="#aa9988"
+            roughness={0.9}
+            metalness={0.2}
+            emissive="#ff4400"
+            emissiveIntensity={1.5}
+          />
         </mesh>
-        {/* Yellow-hot inner fire */}
-        <mesh scale={size * 1.2}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ffdd44" transparent opacity={0.7} depthWrite={false} />
+        {/* Hot ablation glow wrapping the rock */}
+        <mesh geometry={rockGeo} scale={size * 1.1}>
+          <meshBasicMaterial color="#ffaa22" transparent opacity={0.5} depthWrite={false} />
         </mesh>
-        {/* Orange corona */}
+        {/* Plasma corona */}
         <mesh scale={size * 2.5}>
           <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ff6600" transparent opacity={0.25} depthWrite={false} />
+          <meshBasicMaterial color="#ff5500" transparent opacity={0.2} depthWrite={false} />
         </mesh>
-        {/* Red outer glow */}
+        {/* Outer heat glow */}
         <mesh scale={size * 4.5}>
           <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#cc2200" transparent opacity={0.08} depthWrite={false} />
+          <meshBasicMaterial color="#cc2200" transparent opacity={0.06} depthWrite={false} />
         </mesh>
       </group>
 
@@ -255,10 +280,10 @@ const FooterVortex = () => (
       <MetallicSphere />
 
       {/* Meteors streaking across the sphere */}
-      <Meteor startAngle={0.3} yStart={0.4} speed={0.35} delay={0} size={0.05} />
-      <Meteor startAngle={1.2} yStart={-0.3} speed={0.3} delay={4} size={0.04} />
-      <Meteor startAngle={2.5} yStart={0.1} speed={0.4} delay={7.5} size={0.035} />
-      <Meteor startAngle={0.8} yStart={-0.1} speed={0.25} delay={11} size={0.03} />
+      <Meteor startAngle={0.3} yStart={0.4} speed={0.35} delay={0} size={0.05} seed={1} />
+      <Meteor startAngle={1.2} yStart={-0.3} speed={0.3} delay={4} size={0.04} seed={2} />
+      <Meteor startAngle={2.5} yStart={0.1} speed={0.4} delay={7.5} size={0.035} seed={3} />
+      <Meteor startAngle={0.8} yStart={-0.1} speed={0.25} delay={11} size={0.03} seed={4} />
 
       <Environment preset="night" />
     </Canvas>
