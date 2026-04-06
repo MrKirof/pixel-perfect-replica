@@ -114,11 +114,11 @@ const Meteor = ({ cfg }: { cfg: MeteorCfg }) => {
     const exitAngle = entryAngle + Math.PI; // opposite side
 
     const startX = Math.cos(entryAngle) * R;
-    const startZ = Math.sin(entryAngle) * R * 0.6;
+    const startZ = 1.5 + Math.sin(entryAngle) * 0.3; // always in front of sphere
     const endX = Math.cos(exitAngle) * R;
-    const endZ = Math.sin(exitAngle) * R * 0.6;
-    const startY = cfg.yEntry * 0.8;
-    const endY = -cfg.yEntry * 0.8;
+    const endZ = 1.5 + Math.sin(exitAngle) * 0.3;
+    const startY = cfg.yEntry * 0.6;
+    const endY = -cfg.yEntry * 0.6;
 
     const x = THREE.MathUtils.lerp(startX, endX, progress);
     const y = THREE.MathUtils.lerp(startY, endY, progress);
