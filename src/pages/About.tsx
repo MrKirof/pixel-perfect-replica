@@ -146,7 +146,7 @@ const About = () => {
                   transition={{ duration: 0.7, delay: 0.15 }}
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Founder</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Director</span>
                     <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
