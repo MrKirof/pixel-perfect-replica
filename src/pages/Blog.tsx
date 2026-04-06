@@ -67,7 +67,7 @@ const articles = [
   {
     title: "The Psychology of Color in UI Design",
     author: "Kaira Jevenu",
-    role: "UI/UX Design Lead",
+    role: "Web & App Design Lead",
     tag: "Design",
     date: "November 18, 2024",
     read: "7 min",

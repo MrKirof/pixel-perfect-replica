@@ -10,7 +10,7 @@ const plans = [
     icon: Zap,
     features: [
       "Brand Identity & Logo Design",
-      "UI/UX Design",
+      "Web & App Design",
       "Website & App Development",
       "SEO Optimization",
       "2 revision rounds",

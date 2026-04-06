@@ -558,14 +558,43 @@ const StartProjectPopup = () => {
           )}
           {step === "details" && (
             <motion.div key="details" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} className="max-w-md mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <Input placeholder="Your name *" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-12" />
-                <Input type="email" placeholder="Email address *" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-12" />
-                <div className="flex justify-between pt-4">
-                  <button type="button" onClick={() => setStep("select")} className="text-muted-foreground flex items-center gap-2">
+              {/* Selected services summary */}
+              <div className="mb-6 p-4 rounded-2xl bg-white/[0.03] border border-border/15">
+                <h4 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50 mb-3">Selected Services</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selected.map(s => (
+                    <span key={s} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 font-mono text-[11px] text-accent">
+                      <CheckCircle2 size={11} /> {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-1.5">
+                  <label className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 flex items-center gap-2">
+                    <User size={12} /> Your Name
+                  </label>
+                  <Input placeholder="e.g. John Doe" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-12 text-sm" />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 flex items-center gap-2">
+                    <Mail size={12} /> Email Address
+                  </label>
+                  <Input type="email" placeholder="e.g. john@company.com" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-12 text-sm" />
+                </div>
+                <div className="flex justify-between pt-6">
+                  <button type="button" onClick={() => setStep("select")} className="text-muted-foreground flex items-center gap-2 hover:text-foreground transition-colors px-4 py-2.5 rounded-full border border-border/20 hover:border-border/40">
                     <ArrowLeft size={14} /> Back
                   </button>
-                  <button type="submit" className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-bold">Submit Project</button>
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-bold flex items-center gap-2"
+                  >
+                    Submit <Send size={14} />
+                  </motion.button>
                 </div>
               </form>
             </motion.div>
