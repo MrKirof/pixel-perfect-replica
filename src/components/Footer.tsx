@@ -13,7 +13,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: "Behance", href: "https://www.behance.net" },
+  { label: "Behance", href: "https://www.behance.net/mrkirof" },
   { label: "LinkedIn", href: "https://www.linkedin.com" },
 ];
 
