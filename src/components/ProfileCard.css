@@ -75,6 +75,16 @@
   overflow: hidden;
 }
 
+.team-card-wrapper .pc-card {
+  height: auto;
+  max-height: 340px;
+}
+
+.team-card-wrapper .pc-card-wrapper {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
 .pc-card:hover,
 .pc-card.active {
   transition: none;

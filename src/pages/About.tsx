@@ -369,13 +369,14 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.06 }}
+                  className="team-card-wrapper"
                 >
                   <ProfileCard
                     avatarUrl={member.image}
                     name={member.name}
                     title={member.role}
                     handle={member.handle}
-                    status={i === 0 ? "Founder" : "Team"}
+                    status={i === 0 ? "Director" : "Team"}
                     showUserInfo={true}
                     innerGradient={member.gradient}
                     behindGlowColor={member.glowColor}
