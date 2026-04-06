@@ -44,6 +44,7 @@ const PillNav = ({
   const location = useLocation();
   const activeHref = location.pathname;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const circleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const tlRefs = useRef<(gsap.core.Timeline | null)[]>([]);
   const activeTweenRefs = useRef<(gsap.core.Tween | null)[]>([]);
@@ -53,6 +54,7 @@ const PillNav = ({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const navItemsRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const navContainerRef = useRef<HTMLDivElement>(null);
 
   // Close mobile menu on route change
   useEffect(() => {
