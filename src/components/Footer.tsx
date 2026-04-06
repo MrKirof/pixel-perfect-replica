@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
+import FooterOrb from "./FooterOrb";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -14,17 +15,6 @@ const socialLinks = [
   { label: "Behance", href: "https://www.behance.net" },
   { label: "LinkedIn", href: "https://www.linkedin.com" },
 ];
-
-const watchMarkers = Array.from({ length: 12 }, (_, index) => {
-  const angle = index * 30;
-  const isPrimaryMarker = index % 3 === 0;
-
-  return {
-    angle,
-    width: isPrimaryMarker ? "w-1" : "w-0.5",
-    height: isPrimaryMarker ? "h-4" : "h-3",
-  };
-});
 
 const Footer = () => (
   <footer className="surface relative border-t border-border/70 bg-background text-foreground">
