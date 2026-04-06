@@ -4,12 +4,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
+import { useState } from "react";
 import SplashCursor from "@/components/SplashCursor";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
 import FloatingRocks from "@/components/FloatingRocks";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
+import BookCallSection from "@/components/BookCallSection";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import Services from "./pages/Services.tsx";
@@ -23,6 +26,7 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { pathname } = useLocation();
+  const [bookCallOpen, setBookCallOpen] = useState(false);
   return (
     <>
       <FloatingRocks />
@@ -39,8 +43,13 @@ const AppContent = () => {
           { label: "Contact", href: "/contact" },
         ]}
         ctaLabel="Book a Call"
-        ctaHref="/contact"
+        onCtaClick={() => setBookCallOpen(true)}
       />
+      <Dialog open={bookCallOpen} onOpenChange={setBookCallOpen}>
+        <DialogContent className="max-w-5xl w-[95vw] p-0 border-none bg-transparent overflow-y-auto max-h-[90vh] [&>button]:text-white [&>button]:z-50">
+          <BookCallSection />
+        </DialogContent>
+      </Dialog>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
