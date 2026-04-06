@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles, Layout, Code, BookOpen, Tag, Book, Film, Video,
