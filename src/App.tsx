@@ -45,7 +45,9 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
-      <FloatingRocks />
+      <Suspense fallback={null}>
+        <FloatingRocks />
+      </Suspense>
       <NoiseOverlay />
       <Suspense fallback={null}>
         <SplashCursor />

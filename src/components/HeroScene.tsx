@@ -10,6 +10,7 @@ const HeroScene = () => {
     if (!ctx) return;
 
     let animId: number;
+    let isVisible = true;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth * devicePixelRatio;
@@ -19,16 +20,18 @@ const HeroScene = () => {
     resize();
     window.addEventListener("resize", resize);
 
+    const onVisChange = () => { isVisible = !document.hidden; };
+    document.addEventListener("visibilitychange", onVisChange);
+
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
 
-    // Stars
     interface Star {
       x: number; y: number; vx: number; vy: number;
       o: number; r: number; ts: number; to: number;
     }
     const stars: Star[] = [];
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 60; i++) {
       stars.push({
         x: Math.random() * w(), y: Math.random() * h(),
         vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
@@ -40,10 +43,13 @@ const HeroScene = () => {
     let time = 0;
 
     const draw = () => {
+      if (!isVisible) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
       ctx.clearRect(0, 0, w(), h());
       time += 0.016;
 
-      // Stars
       for (const s of stars) {
         s.x += s.vx; s.y += s.vy;
         if (s.x < 0) s.x = w(); if (s.x > w()) s.x = 0;
@@ -62,6 +68,7 @@ const HeroScene = () => {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisChange);
     };
   }, []);
 

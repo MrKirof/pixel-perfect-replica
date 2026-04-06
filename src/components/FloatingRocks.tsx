@@ -10,6 +10,7 @@ const FloatingRocks = () => {
     if (!ctx) return;
 
     let animId: number;
+    let isVisible = true;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth * devicePixelRatio;
@@ -18,6 +19,10 @@ const FloatingRocks = () => {
     };
     resize();
     window.addEventListener("resize", resize);
+
+    // Pause when tab is hidden
+    const onVisChange = () => { isVisible = !document.hidden; };
+    document.addEventListener("visibilitychange", onVisChange);
 
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
@@ -31,18 +36,17 @@ const FloatingRocks = () => {
       vx: number;
       vy: number;
       opacity: number;
-      shape: number[]; // irregular polygon vertices as angle offsets
+      shape: number[];
     }
 
-    const rockCount = 120;
+    const rockCount = 40;
     const rocks: Rock[] = [];
 
     for (let i = 0; i < rockCount; i++) {
-      // Generate irregular polygon shape (5-8 vertices)
       const vertices = 5 + Math.floor(Math.random() * 4);
       const shape: number[] = [];
       for (let v = 0; v < vertices; v++) {
-        shape.push(0.4 + Math.random() * 0.6); // radius variation per vertex
+        shape.push(0.4 + Math.random() * 0.6);
       }
 
       rocks.push({
@@ -79,7 +83,6 @@ const FloatingRocks = () => {
       ctx.fillStyle = `rgba(180, 170, 155, ${rock.opacity})`;
       ctx.fill();
 
-      // Subtle light edge
       ctx.strokeStyle = `rgba(220, 215, 205, ${rock.opacity * 0.5})`;
       ctx.lineWidth = 0.5;
       ctx.stroke();
@@ -87,6 +90,10 @@ const FloatingRocks = () => {
     };
 
     const draw = () => {
+      if (!isVisible) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
       ctx.clearRect(0, 0, w(), h());
       time += 0.016;
 
@@ -95,7 +102,6 @@ const FloatingRocks = () => {
         rock.y += rock.vy + Math.cos(time * 0.2 + rock.size) * 0.015;
         rock.rotation += rock.rotSpeed;
 
-        // Wrap around screen
         if (rock.x < -10) rock.x = w() + 10;
         if (rock.x > w() + 10) rock.x = -10;
         if (rock.y < -10) rock.y = h() + 10;
@@ -111,6 +117,7 @@ const FloatingRocks = () => {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisChange);
     };
   }, []);
 
