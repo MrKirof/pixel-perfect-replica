@@ -557,14 +557,10 @@ const StartProjectPopup = () => {
             </motion.div>
           )}
           {step === "details" && (
-            <motion.div key="details" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} className="max-w-2xl mx-auto">
+            <motion.div key="details" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} className="max-w-md mx-auto">
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input placeholder="Your name *" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-11" />
-                  <Input type="email" placeholder="Email address *" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-11" />
-                </div>
-                <Input placeholder="Company / Brand name" value={formData.company} onChange={e => setFormData(p => ({ ...p, company: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-11" />
-                <Textarea placeholder="Tell us about your project..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl min-h-[100px]" />
+                <Input placeholder="Your name *" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-12" />
+                <Input type="email" placeholder="Email address *" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-12" />
                 <div className="flex justify-between pt-4">
                   <button type="button" onClick={() => setStep("select")} className="text-muted-foreground flex items-center gap-2">
                     <ArrowLeft size={14} /> Back
