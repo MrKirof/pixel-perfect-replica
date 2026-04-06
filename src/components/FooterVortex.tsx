@@ -34,7 +34,7 @@ const MetallicSphere = () => {
 };
 
 /* ── Meteors flying inside sphere, fade at edges ── */
-const METEOR_COUNT = 6;
+const METEOR_COUNT = 4;
 
 interface MeteorCfg {
   angle: number;    // entry angle on the sphere edge
