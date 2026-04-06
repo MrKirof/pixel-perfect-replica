@@ -18,7 +18,7 @@ const testimonials = [
   },
   {
     quote: "The motion graphics they made for our product launch got more engagement than anything we'd ever put out.",
-    name: "Leo Dubois",
+    name: "David Mitchell",
     title: "Marketing Director at Blumora",
     rating: 5,
   },
