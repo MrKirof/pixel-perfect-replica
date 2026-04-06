@@ -214,7 +214,7 @@ const PricingCard = ({
 const PricingSection = () => {
   return (
     <section
-      className="py-24 md:py-36 relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
       style={{ backgroundColor: "#0a0a0a", color: "#ffffff" }}
     >
       {/* Ambient background */}

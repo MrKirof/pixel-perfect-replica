@@ -138,7 +138,7 @@ const Work = () => {
   return (
     <PageTransition>
       {/* ── Hero ── */}
-      <section className="pt-32 md:pt-44 pb-16 md:pb-24 relative overflow-hidden">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <BackgroundPaths />
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -291,7 +291,7 @@ const Work = () => {
 
       {/* ── CTA ── */}
       <FadeIn>
-        <section className="py-28 md:py-40 relative overflow-hidden bg-accent text-accent-foreground">
+        <section className="py-16 md:py-24 relative overflow-hidden bg-accent text-accent-foreground">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[140%] bg-black/[0.03] origin-center" style={{ transform: 'rotate(-12deg)' }} />
           </div>

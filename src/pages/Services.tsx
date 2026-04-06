@@ -613,7 +613,7 @@ const Services = () => {
   return (
     <PageTransition>
       {/* ── Hero ── */}
-      <section className="section-padding pt-32 md:pt-44 pb-16 md:pb-24 relative overflow-hidden">
+      <section className="section-padding pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <BackgroundPaths />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">

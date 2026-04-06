@@ -368,7 +368,7 @@ const Index = () => {
         {/* Grid lines */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-        <div className="relative z-10 py-32 md:py-48">
+        <div className="relative z-10 py-20 md:py-28">
           <div className="max-w-7xl mx-auto text-center px-6 md:px-8 lg:px-16">
             {/* Eyebrow */}
             <motion.div

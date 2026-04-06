@@ -59,7 +59,7 @@ const About = () => {
   return (
     <PageTransition>
       {/* ── Hero ── */}
-      <section className="pt-32 md:pt-44 pb-24 md:pb-36 relative overflow-hidden">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
@@ -107,7 +107,7 @@ const About = () => {
 
       {/* ── Story ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative">
+        <section className="surface py-16 md:py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-5">
@@ -142,7 +142,7 @@ const About = () => {
 
       {/* ── Stats ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative overflow-hidden">
+        <section className="surface py-16 md:py-24 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--accent) / 0.04), transparent 70%)' }} />
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
@@ -165,7 +165,7 @@ const About = () => {
 
       {/* ── Values ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative">
+        <section className="surface py-16 md:py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
@@ -200,7 +200,7 @@ const About = () => {
 
       {/* ── Timeline ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative">
+        <section className="surface py-16 md:py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="mb-16">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Journey</span>
@@ -260,7 +260,7 @@ const About = () => {
 
       {/* ── Team ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative overflow-hidden">
+        <section className="surface py-16 md:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
@@ -303,7 +303,7 @@ const About = () => {
 
       {/* ── Awards ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative">
+        <section className="surface py-16 md:py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
@@ -341,7 +341,7 @@ const About = () => {
 
       {/* ── Culture ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative">
+        <section className="surface py-16 md:py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-5">
@@ -385,7 +385,7 @@ const About = () => {
 
       {/* ── CTA ── */}
       <FadeIn>
-        <section className="surface py-28 md:py-40 relative overflow-hidden">
+        <section className="surface py-16 md:py-24 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[140%] bg-accent/[0.03] origin-center" style={{ transform: 'rotate(-12deg)' }} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px]" style={{ background: 'radial-gradient(ellipse 50% 40% at 50% 50%, hsl(var(--accent) / 0.06), transparent 70%)' }} />

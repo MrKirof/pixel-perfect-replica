@@ -11,7 +11,7 @@ interface SectionHeadingProps {
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const SectionHeading = ({ tag, title, description, align = "left", number }: SectionHeadingProps) => (
-  <div className={`mb-16 md:mb-20 ${align === "center" ? "text-center" : ""}`}>
+  <div className={`mb-10 md:mb-14 ${align === "center" ? "text-center" : ""}`}>
     <motion.div
       initial={{ opacity: 0, x: align === "center" ? 0 : -20 }}
       whileInView={{ opacity: 1, x: 0 }}
