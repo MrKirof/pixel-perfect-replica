@@ -78,7 +78,7 @@ const services = [
   {
     icon: Megaphone, title: "Product Marketing", number: "08",
     desc: "Strategy + execution: campaigns, creatives, and funnels that drive real growth.",
-    longDesc: "We don't just run ads. we build growth engines backed by data.",
+    longDesc: "We don't just run ads, we build growth engines backed by data.",
     process: ["Market & Competitor Research", "Campaign Strategy & Planning", "Creative Production & A/B Testing", "Performance Tracking & Optimization"],
     deliverables: ["Campaign Strategy", "Ad Creatives", "Landing Pages", "Analytics Dashboard"],
     example: "Veltro. Growth campaign that increased qualified leads by 180%.",
@@ -113,7 +113,7 @@ const services = [
   },
   {
     icon: Video, title: "Video Production", number: "12",
-    desc: "End-to-end video production — from concept and scripting to shooting, editing, and final delivery.",
+    desc: "End-to-end video production, from concept and scripting to shooting, editing, and final delivery.",
     longDesc: "We produce cinematic brand videos, product demos, testimonials, and social content that captivate audiences and drive engagement.",
     process: ["Creative Brief & Pre-production", "Scripting & Storyboarding", "Filming & Direction", "Post-production & Color Grading"],
     deliverables: ["Raw Footage", "Edited Videos", "Social Cuts", "Thumbnail Designs", "Subtitles & Captions"],
@@ -123,7 +123,7 @@ const services = [
   {
     icon: BarChart3, title: "Digital Marketing", number: "13",
     desc: "Data-driven digital marketing strategies across paid ads, social media, email, and content.",
-    longDesc: "We build full-funnel digital marketing ecosystems — from awareness campaigns to retention strategies — all backed by analytics and continuous optimization.",
+    longDesc: "We build full-funnel digital marketing ecosystems, from awareness campaigns to retention strategies, all backed by analytics and continuous optimization.",
     process: ["Audience Research & Segmentation", "Channel Strategy & Budget Planning", "Campaign Execution & A/B Testing", "Analytics, Reporting & Optimization"],
     deliverables: ["Marketing Strategy Doc", "Ad Campaigns", "Email Sequences", "Social Media Calendar", "Performance Reports"],
     example: "Orbitra. Multi-channel campaign that delivered 320% ROI in 90 days.",
@@ -132,7 +132,7 @@ const services = [
   {
     icon: Share2, title: "Social Media Management", number: "14",
     desc: "Strategic content planning, scheduling, community engagement, and growth across all platforms.",
-    longDesc: "We manage your social presence end-to-end — crafting platform-specific content, building engaged communities, and turning followers into customers.",
+    longDesc: "We manage your social presence end-to-end, crafting platform-specific content, building engaged communities, and turning followers into customers.",
     process: ["Platform Audit & Strategy", "Content Calendar & Creation", "Community Management & Engagement", "Analytics & Growth Optimization"],
     deliverables: ["Content Calendar", "Platform-Specific Posts", "Engagement Reports", "Growth Strategy", "Monthly Analytics"],
     example: "Velora. Grew Instagram from 2K to 85K followers in 6 months with 8% engagement rate.",
@@ -150,7 +150,7 @@ const services = [
   {
     icon: Camera, title: "Photography", number: "16",
     desc: "Professional product shoots, team portraits, event coverage, and lifestyle photography.",
-    longDesc: "We capture your brand's essence through stunning visuals — from studio product photography to on-location lifestyle shoots.",
+    longDesc: "We capture your brand's essence through stunning visuals, from studio product photography to on-location lifestyle shoots.",
     process: ["Creative Direction & Mood Boards", "Location Scouting & Setup", "Photo Shoot & Direction", "Post-Processing & Retouching"],
     deliverables: ["High-Res Images", "Web-Optimized Files", "Social Media Crops", "Raw Files", "Mood Board"],
     example: "Luvian. Product photography that increased e-commerce sales by 38%.",
@@ -168,7 +168,7 @@ const services = [
   {
     icon: Package, title: "Packaging Design", number: "18",
     desc: "Eye-catching product packaging, labels, and unboxing experiences that make your brand unforgettable.",
-    longDesc: "We design packaging that sells on the shelf and delights at unboxing — combining structural innovation with stunning visual design.",
+    longDesc: "We design packaging that sells on the shelf and delights at unboxing, combining structural innovation with stunning visual design.",
     process: ["Research & Concept Development", "Structural & Visual Design", "Prototyping & Material Selection", "Print Production & QA"],
     deliverables: ["Packaging Mockups", "Dieline Templates", "Print-Ready Files", "Material Specs", "Unboxing Guide"],
     example: "Bloomhouse. Packaging redesign that won a Dieline Award and increased shelf pickup by 60%.",
@@ -707,7 +707,7 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <p className="text-muted-foreground text-base leading-relaxed mb-8">
-                  From concept to launch and beyond — we offer a comprehensive
+                  From concept to launch and beyond, we offer a comprehensive
                   suite of 11 specialized services to help you build, grow, and
                   dominate your market.
                 </p>
@@ -763,7 +763,7 @@ const Services = () => {
             </div>
             <div className="md:col-span-7 flex items-end">
               <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
-                Every project follows our proven four-phase methodology — ensuring
+                Every project follows our proven four-phase methodology, ensuring
                 clarity, alignment, and exceptional output from day one.
               </p>
             </div>

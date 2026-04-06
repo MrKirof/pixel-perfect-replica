@@ -188,7 +188,7 @@ const BookCallSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Pick a date and time. We'll discuss your vision, explore possibilities, and chart a roadmap — zero commitment.
+                Pick a date and time. We'll discuss your vision, explore possibilities, and chart a roadmap with zero commitment.
               </motion.p>
 
               {/* Progress indicator */}

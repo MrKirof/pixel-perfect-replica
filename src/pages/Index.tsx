@@ -199,7 +199,7 @@ const ServicesSection = () => {
           <SectionHeading
             tag="Services"
             title="Eighteen disciplines, one team"
-            description="From pixel to pipeline — every layer of your brand covered."
+            description="From pixel to pipeline. Every layer of your brand covered."
           />
           <div className="flex items-center gap-4">
             <button onClick={() => scroll(-1)} className="w-12 h-12 border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors" data-cursor-hover>
@@ -421,7 +421,7 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Drop us a message. We respond within 24 hours — usually faster.
+              Drop us a message. We respond within 24 hours, usually faster.
             </motion.p>
 
             {/* CTA buttons */}
