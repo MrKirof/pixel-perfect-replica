@@ -727,7 +727,7 @@ const Services = () => {
                 </p>
                 <div className="flex items-center gap-6">
                   {[
-                    { val: "11", label: "Services", accent: true },
+                    { val: "18", label: "Services", accent: true },
                     { val: "3000+", label: "Projects", accent: false },
                     { val: "100%", label: "Satisfaction", accent: false },
                   ].map((stat, i) => (

@@ -330,7 +330,7 @@ const Work = () => {
                     <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Happy Clients</span>
                   </div>
                   <div className="flex items-baseline gap-3">
-                    <span className="font-display text-3xl md:text-4xl font-extrabold text-foreground">11</span>
+                    <span className="font-display text-3xl md:text-4xl font-extrabold text-foreground">18</span>
                     <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Disciplines</span>
                   </div>
                 </div>
