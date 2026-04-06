@@ -269,11 +269,11 @@ const ServicesSection = () => {
   );
 };
 
-const Index = () => {
+const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
 
   return (
     <PageTransition>
-      <Hero />
+      <Hero onStartProject={onStartProject} />
 
 
       {/* ═══════════════════════════ STATS ═══════════════════════════ */}

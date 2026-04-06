@@ -89,13 +89,13 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
             Our Work
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <Link
-            to="/contact"
+          <button
+            onClick={onStartProject}
             className="magnetic-btn border border-white/20 text-white font-display text-base px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-3 hover:border-accent hover:text-accent transition-all duration-500 ease-out"
             data-cursor-hover
           >
             Start a Project
-          </Link>
+          </button>
         </div>
 
         {/* Decorative line */}
