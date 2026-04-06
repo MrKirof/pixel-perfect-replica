@@ -92,14 +92,38 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
       fragmentShader: `
         varying vec2 vUv;
         void main() {
-          float alpha = (1.0 - vUv.x) * 0.9;
-          alpha *= smoothstep(0.0, 0.1, 1.0 - abs(vUv.y - 0.5) * 2.0);
-          vec3 hot = vec3(1.0, 0.95, 0.8);
-          vec3 warm = vec3(1.0, 0.5, 0.1);
-          vec3 cool = vec3(0.8, 0.2, 0.05);
-          vec3 col = mix(hot, warm, vUv.x * 2.0);
-          col = mix(col, cool, max(vUv.x - 0.5, 0.0) * 2.0);
-          gl_FragColor = vec4(col, alpha);
+          float along = vUv.x; // 0 = head, 1 = tail
+          float across = abs(vUv.y - 0.5) * 2.0; // 0 = center, 1 = edge
+          
+          // Core brightness - bright white-hot center that tapers
+          float coreMask = smoothstep(1.0, 0.0, across) * (1.0 - along);
+          float edgeSoft = smoothstep(1.0, 0.3, across);
+          
+          // Fire color gradient: white-hot → yellow → orange → red → dark
+          vec3 whiteHot = vec3(1.0, 1.0, 0.95);
+          vec3 yellow = vec3(1.0, 0.85, 0.3);
+          vec3 orange = vec3(1.0, 0.45, 0.05);
+          vec3 red = vec3(0.7, 0.12, 0.02);
+          vec3 smoke = vec3(0.15, 0.05, 0.02);
+          
+          // Along the trail: hot to cool
+          vec3 col = mix(whiteHot, yellow, smoothstep(0.0, 0.1, along));
+          col = mix(col, orange, smoothstep(0.05, 0.35, along));
+          col = mix(col, red, smoothstep(0.3, 0.7, along));
+          col = mix(col, smoke, smoothstep(0.6, 1.0, along));
+          
+          // Across: edges are cooler/darker
+          col = mix(col, orange * 0.8, across * 0.5);
+          
+          // Flickering turbulence
+          float flicker = 0.85 + 0.15 * sin(along * 40.0 + across * 10.0);
+          
+          // Alpha: bright core, soft edges, fading tail
+          float alpha = coreMask * edgeSoft * flicker;
+          alpha *= smoothstep(1.0, 0.85, along); // fade tail end
+          alpha = clamp(alpha, 0.0, 1.0);
+          
+          gl_FragColor = vec4(col * (1.0 + coreMask * 0.5), alpha);
         }
       `,
     });
@@ -147,7 +171,7 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     if (trailMeshRef.current && posHistory.current.length > 1) {
       const positions = trailGeo.attributes.position.array as Float32Array;
       const hist = posHistory.current;
-      const ribbonWidth = size * 0.3;
+      const ribbonWidth = size * 0.5;
 
       for (let i = 0; i < TRAIL_LENGTH; i++) {
         const p = i < hist.length ? hist[i] : hist[hist.length - 1];
@@ -183,20 +207,25 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     <>
       {/* Meteor head */}
       <group ref={headRef}>
-        {/* Bright core */}
-        <mesh scale={size * 0.8}>
-          <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ffffff" />
+        {/* White-hot core */}
+        <mesh scale={size * 0.5}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#fffef0" />
         </mesh>
-        {/* Inner glow */}
-        <mesh scale={size * 2}>
-          <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ffcc66" transparent opacity={0.5} depthWrite={false} />
+        {/* Yellow-hot inner fire */}
+        <mesh scale={size * 1.2}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ffdd44" transparent opacity={0.7} depthWrite={false} />
         </mesh>
-        {/* Outer haze */}
-        <mesh scale={size * 4}>
+        {/* Orange corona */}
+        <mesh scale={size * 2.5}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ff6600" transparent opacity={0.25} depthWrite={false} />
+        </mesh>
+        {/* Red outer glow */}
+        <mesh scale={size * 4.5}>
           <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ff6600" transparent opacity={0.12} depthWrite={false} />
+          <meshBasicMaterial color="#cc2200" transparent opacity={0.08} depthWrite={false} />
         </mesh>
       </group>
 
