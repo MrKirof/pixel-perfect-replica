@@ -533,7 +533,7 @@ const ProcessCard = ({ step, index }: { step: typeof processSteps[0]; index: num
 
         {/* Large watermark number */}
         <motion.span
-          className="font-display text-3xl md:text-3xl md:text-4xl font-black absolute top-2 right-4 select-none pointer-events-none"
+          className="font-display text-4xl md:text-5xl font-black absolute top-2 right-4 select-none pointer-events-none"
           animate={hovered ? {
             color: "hsl(var(--accent) / 0.15)",
             scale: 1.1,
@@ -628,7 +628,7 @@ const Services = () => {
                   <div className="w-8 h-px bg-accent/30" />
                   <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">What We Do</span>
                 </div>
-                <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
+                <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-8">
                   End-to-end<br />
                   solutions,{" "}
                   <span className="text-gradient">expertly</span>
@@ -692,7 +692,7 @@ const Services = () => {
                 <div className="w-8 h-px bg-accent/30" />
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">How We Work</span>
               </div>
-              <h2 className="font-display text-3xl font-extrabold leading-[0.9] tracking-tight">
+              <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight">
                 A process<br />built for{" "}
                 <span className="text-gradient">results</span>
               </h2>

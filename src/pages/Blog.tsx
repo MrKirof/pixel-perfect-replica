@@ -142,7 +142,7 @@ const Blog = () => {
               <div className="w-8 h-px bg-border" />
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Blog</span>
             </div>
-            <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
+            <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-8">
               Ideas, guides &<br />
               <span className="text-gradient">insights</span>
             </h1>
@@ -172,7 +172,7 @@ const Blog = () => {
                       <span className="font-mono text-xs uppercase tracking-wider bg-accent text-accent-foreground px-2.5 py-1">{featured.tag}</span>
                       <span className="font-mono text-xs uppercase tracking-wider text-accent border border-accent/30 px-2.5 py-1">Featured</span>
                     </div>
-                    <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 group-hover:text-accent transition-colors">
+                    <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4 group-hover:text-accent transition-colors">
                       {featured.title}
                     </h2>
                     <p className="text-muted-foreground font-body text-base leading-relaxed mb-8">
@@ -306,7 +306,7 @@ const Blog = () => {
               Stay Updated
               <span className="w-8 h-px bg-accent" />
             </span>
-            <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9] mb-6">
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9] mb-6">
               Get insights<br />delivered <span className="text-gradient">weekly</span>
             </h2>
             <p className="text-muted-foreground font-body text-base mb-10 max-w-md mx-auto leading-relaxed">

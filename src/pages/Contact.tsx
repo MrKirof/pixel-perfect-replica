@@ -88,7 +88,7 @@ const Contact = () => {
               <div className="w-8 h-px bg-border" />
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Contact</span>
             </div>
-            <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
+            <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-8">
               Let's build<br />
               something <span className="text-gradient">great</span>
             </h1>
@@ -139,7 +139,7 @@ const Contact = () => {
               <div className="lg:col-span-7">
                 <div className="mb-10">
                   <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Get in Touch</span>
-                  <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+                  <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                     Tell us about<br />your <span className="text-gradient">project</span>
                   </h2>
                 </div>
@@ -346,7 +346,7 @@ const Contact = () => {
             <div className="mb-14 flex items-end justify-between">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Global Reach</span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                   Working <span className="text-gradient">worldwide</span>
                 </h2>
               </div>

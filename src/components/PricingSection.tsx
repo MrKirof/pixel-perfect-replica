@@ -247,7 +247,7 @@ const PricingSection = () => {
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">
             Pricing
           </span>
-          <h2 className="font-display text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
             Simple, transparent
             <br />
             <span className="text-gradient">pricing</span>

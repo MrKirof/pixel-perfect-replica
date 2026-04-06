@@ -69,7 +69,7 @@ const About = () => {
                   <div className="w-8 h-px bg-border" />
                   <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">About Us</span>
                 </div>
-                <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
+                <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-8">
                   We craft brands<br />
                   that{" "}
                   <span className="text-gradient">endure</span>
@@ -83,19 +83,19 @@ const About = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-accent">20</span>
+                    <span className="font-display text-4xl md:text-5xl font-extrabold text-accent">20</span>
                     <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Team Members</p>
                   </div>
                   <div>
-                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-foreground">3</span>
+                    <span className="font-display text-4xl md:text-5xl font-extrabold text-foreground">3</span>
                     <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Continents</p>
                   </div>
                   <div>
-                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-foreground">14+</span>
+                    <span className="font-display text-4xl md:text-5xl font-extrabold text-foreground">14+</span>
                     <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Countries Served</p>
                   </div>
                   <div>
-                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-foreground">0</span>
+                    <span className="font-display text-4xl md:text-5xl font-extrabold text-foreground">0</span>
                     <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Missed Deadlines</p>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-5">
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Our Story</span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                   12 years of<br />building things<br />that <span className="text-gradient">last</span>
                 </h2>
               </div>
@@ -170,7 +170,7 @@ const About = () => {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Values</span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                   What we<br />stand <span className="text-gradient">for</span>
                 </h2>
               </div>
@@ -204,7 +204,7 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="mb-16">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Journey</span>
-              <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+              <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                 How we got <span className="text-gradient">here</span>
               </h2>
             </div>
@@ -265,7 +265,7 @@ const About = () => {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                   The minds behind<br />the <span className="text-gradient">magic</span>
                 </h2>
               </div>
@@ -308,7 +308,7 @@ const About = () => {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Recognition</span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
                   Awards &<br /><span className="text-gradient">features</span>
                 </h2>
               </div>
@@ -346,7 +346,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-5">
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Culture</span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9] mb-8">
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9] mb-8">
                   How we<br /><span className="text-gradient">work</span>
                 </h2>
                 <div className="w-24 h-px bg-gradient-to-r from-accent to-transparent" />
