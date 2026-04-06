@@ -199,7 +199,7 @@ const ServicesSection = () => {
           <div>
             <SectionHeading
               tag="Services"
-              title="Thirteen disciplines, one team"
+              title="Eighteen disciplines, one team"
               description="From pixel to pipeline — every layer of your brand covered."
             />
           </div>
