@@ -33,10 +33,92 @@ const MetallicSphere = () => {
   );
 };
 
-/* ── Orbiting Particles ── */
+/* ── Realistic Asteroid ── */
+const createAsteroidGeometry = (seed: number) => {
+  const geo = new THREE.IcosahedronGeometry(1, 2);
+  const pos = geo.attributes.position;
+  const rng = (n: number) => {
+    let x = Math.sin(seed * 9301 + n * 4973) * 49297;
+    return x - Math.floor(x);
+  };
+  for (let i = 0; i < pos.count; i++) {
+    const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i));
+    const noise = 0.7 + rng(i) * 0.6;
+    v.multiplyScalar(noise);
+    pos.setXYZ(i, v.x, v.y, v.z);
+  }
+  geo.computeVertexNormals();
+  return geo;
+};
+
+interface AsteroidData {
+  radius: number;
+  speed: number;
+  offset: number;
+  tiltX: number;
+  tiltZ: number;
+  scale: number;
+  rotSpeed: number;
+  seed: number;
+  yOffset: number;
+}
+
+const ASTEROID_COUNT = 8;
+
+const asteroidConfigs: AsteroidData[] = Array.from({ length: ASTEROID_COUNT }, (_, i) => ({
+  radius: 2.2 + Math.random() * 1.3,
+  speed: 0.15 + Math.random() * 0.25,
+  offset: (i / ASTEROID_COUNT) * Math.PI * 2 + Math.random() * 0.5,
+  tiltX: (Math.random() - 0.5) * 0.6,
+  tiltZ: (Math.random() - 0.5) * 0.4,
+  scale: 0.06 + Math.random() * 0.1,
+  rotSpeed: 0.5 + Math.random() * 2,
+  seed: i * 137 + 42,
+  yOffset: (Math.random() - 0.5) * 0.8,
+}));
+
+const Asteroid = ({ data }: { data: AsteroidData }) => {
+  const ref = useRef<THREE.Mesh>(null);
+  const geo = useMemo(() => createAsteroidGeometry(data.seed), [data.seed]);
+
+  useFrame(({ clock }) => {
+    if (!ref.current) return;
+    const t = clock.getElapsedTime();
+    const angle = data.offset + t * data.speed;
+
+    ref.current.position.x = Math.cos(angle) * data.radius;
+    ref.current.position.z = Math.sin(angle) * data.radius;
+    ref.current.position.y = data.yOffset + Math.sin(t * 0.5 + data.offset) * 0.2;
+
+    ref.current.rotation.x = t * data.rotSpeed * 0.7;
+    ref.current.rotation.y = t * data.rotSpeed;
+    ref.current.rotation.z = t * data.rotSpeed * 0.4;
+  });
+
+  return (
+    <mesh ref={ref} geometry={geo} scale={data.scale}>
+      <meshStandardMaterial
+        color="#888888"
+        roughness={0.85}
+        metalness={0.2}
+        envMapIntensity={0.8}
+      />
+    </mesh>
+  );
+};
+
+const AsteroidBelt = () => (
+  <group rotation={[0.3, 0, 0.15]}>
+    {asteroidConfigs.map((data, i) => (
+      <Asteroid key={i} data={data} />
+    ))}
+  </group>
+);
+
+/* ── Small debris particles ── */
 const OrbitParticles = () => {
   const ref = useRef<THREE.Points>(null);
-  const count = 500;
+  const count = 400;
 
   const { positions, speeds, radii, offsets } = useMemo(() => {
     const positions = new Float32Array(count * 3);
@@ -48,7 +130,7 @@ const OrbitParticles = () => {
       speeds[i] = 0.08 + Math.random() * 0.3;
       offsets[i] = Math.random() * Math.PI * 2;
       positions[i * 3] = Math.cos(offsets[i]) * radii[i];
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 1.2;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 1.0;
       positions[i * 3 + 2] = Math.sin(offsets[i]) * radii[i];
     }
     return { positions, speeds, radii, offsets };
@@ -86,11 +168,11 @@ const OrbitParticles = () => {
         <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.04}
+        size={0.03}
         map={texture}
         color="#99bbff"
         transparent
-        opacity={0.6}
+        opacity={0.5}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
         sizeAttenuation
@@ -117,6 +199,7 @@ const FooterVortex = () => (
       <spotLight position={[0, 5, 0]} intensity={0.5} angle={0.4} penumbra={1} color="#4488ff" />
 
       <MetallicSphere />
+      <AsteroidBelt />
       <OrbitParticles />
 
       <Environment preset="night" />
