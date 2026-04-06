@@ -197,7 +197,7 @@ const PillNav = ({
   } as React.CSSProperties;
 
   return (
-    <div className="pill-nav-container">
+    <div className={`pill-nav-container ${isScrolled ? 'is-scrolled' : ''}`} ref={navContainerRef}>
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
         {logo && (
           <Link
