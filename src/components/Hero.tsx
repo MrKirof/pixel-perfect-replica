@@ -44,7 +44,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
       <AnimatedPlanet />
 
       {/* Content. left-aligned editorial layout */}
-      <div className="relative z-10 flex-1 flex flex-col justify-end pb-[30vh] sm:pb-[22vh] md:pb-[14vh]">
+      <div className="relative z-10 flex-1 flex flex-col justify-center sm:justify-end pb-[12vh] sm:pb-[22vh] md:pb-[14vh]">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-16">
         {/* Radial glow behind content */}
         <div className="absolute bottom-[10vh] left-0 w-[700px] h-[500px] md:w-[1000px] md:h-[600px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 30% 60%, hsl(var(--accent) / 0.06), transparent 70%)', filter: 'blur(60px)' }} />
