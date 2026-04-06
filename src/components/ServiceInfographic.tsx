@@ -626,6 +626,189 @@ const DigitalMarketingInfographic = ({ color, hovered }: { color: string; hovere
   </svg>
 );
 
+
+/* ── 14: Social Media Management ── */
+const SocialMediaInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* Central hub */}
+    <motion.circle cx={100} cy={65} r={20} fill={`hsl(${color} / 0.08)`} stroke={`hsl(${color} / 0.3)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, ease }}
+      style={{ transformOrigin: "100px 65px" }}
+    />
+    <motion.text x={100} y={70} textAnchor="middle" fontSize={14} fontWeight="bold" fill={`hsl(${color} / 0.5)`}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>#</motion.text>
+    {/* Orbiting platform dots */}
+    {[0, 1, 2, 3, 4].map(i => {
+      const angle = (i * 72 - 90) * Math.PI / 180;
+      const cx = 100 + 45 * Math.cos(angle);
+      const cy = 65 + 45 * Math.sin(angle);
+      return (
+        <g key={i}>
+          <FloatingLine color={color} x1={100} y1={65} x2={cx} y2={cy} delay={0.5 + i * 0.1} />
+          <motion.circle cx={cx} cy={cy} r={7} fill={`hsl(${color} / ${0.1 + i * 0.04})`} stroke={`hsl(${color} / 0.25)`} strokeWidth={1}
+            initial={{ scale: 0 }} animate={{ scale: 1 }}
+            transition={{ delay: 0.6 + i * 0.12, duration: 0.4, ease }}
+            style={{ transformOrigin: `${cx}px ${cy}px` }}
+          />
+        </g>
+      );
+    })}
+    {/* Engagement hearts */}
+    {[0, 1, 2].map(i => (
+      <motion.text key={i} x={40 + i * 55} y={125} fontSize={10} fill={`hsl(${color} / 0.3)`}
+        animate={hovered ? { y: [125, 118, 125], opacity: [0.3, 0.8, 0.3] } : {}}
+        transition={{ duration: 1.5, delay: i * 0.4, repeat: Infinity }}>♥</motion.text>
+    ))}
+    <Pulse color={color} cx={170} cy={25} r={3} delay={0.3} />
+  </svg>
+);
+
+/* ── 15: Copywriting & Content ── */
+const CopywritingInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* Document */}
+    <motion.rect x={55} y={20} width={90} height={100} rx={5} fill={`hsl(${color} / 0.05)`} stroke={`hsl(${color} / 0.2)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, ease }}
+      style={{ transformOrigin: "100px 70px" }}
+    />
+    {/* Text lines */}
+    {[0, 1, 2, 3, 4, 5].map(i => (
+      <motion.rect key={i} x={68} y={35 + i * 13} width={i === 0 ? 50 : 64 - i * 5} height={4} rx={2}
+        fill={`hsl(${color} / ${i === 0 ? 0.3 : 0.12})`}
+        initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+        transition={{ delay: 0.4 + i * 0.08, duration: 0.4 }}
+        style={{ transformOrigin: `68px ${37 + i * 13}px` }}
+      />
+    ))}
+    {/* Cursor blink */}
+    <motion.rect x={68} y={100} width={2} height={10} fill={`hsl(${color})`}
+      animate={hovered ? { opacity: [1, 0, 1] } : { opacity: 0.5 }}
+      transition={{ duration: 0.8, repeat: Infinity }}
+    />
+    {/* Pen icon */}
+    <motion.path d="M160 30 L170 20 L175 25 L165 35 Z" fill={`hsl(${color} / 0.2)`} stroke={`hsl(${color} / 0.3)`} strokeWidth={1}
+      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
+    />
+    <Pulse color={color} cx={30} cy={60} r={3} delay={0.5} />
+  </svg>
+);
+
+/* ── 16: Photography ── */
+const PhotographyInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* Camera body */}
+    <motion.rect x={50} y={40} width={100} height={65} rx={8} fill={`hsl(${color} / 0.06)`} stroke={`hsl(${color} / 0.25)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, ease }}
+      style={{ transformOrigin: "100px 72px" }}
+    />
+    {/* Flash */}
+    <motion.rect x={75} y={32} width={30} height={10} rx={3} fill={`hsl(${color} / 0.1)`} stroke={`hsl(${color} / 0.2)`} strokeWidth={1}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+    />
+    {/* Lens */}
+    <motion.circle cx={100} cy={72} r={22} fill="none" stroke={`hsl(${color} / 0.3)`} strokeWidth={2}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4, ease }}
+      style={{ transformOrigin: "100px 72px" }}
+    />
+    <motion.circle cx={100} cy={72} r={14} fill={`hsl(${color} / 0.08)`} stroke={`hsl(${color} / 0.15)`} strokeWidth={1}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.5, ease }}
+      style={{ transformOrigin: "100px 72px" }}
+    />
+    {/* Shutter flash */}
+    <motion.circle cx={100} cy={72} r={6} fill={`hsl(${color} / 0.3)`}
+      animate={hovered ? { r: [6, 30, 6], opacity: [0.3, 0, 0.3] } : {}}
+      transition={{ duration: 2, repeat: Infinity }}
+    />
+    {/* Photo thumbnails */}
+    {[0, 1, 2].map(i => (
+      <motion.rect key={i} x={165} y={35 + i * 25} width={20} height={18} rx={2}
+        fill={`hsl(${color} / ${0.08 + i * 0.04})`} stroke={`hsl(${color} / 0.15)`} strokeWidth={0.5}
+        initial={{ x: 200, opacity: 0 }} animate={{ x: 165, opacity: 1 }}
+        transition={{ delay: 0.8 + i * 0.15, duration: 0.4, ease }}
+      />
+    ))}
+    <Pulse color={color} cx={30} cy={40} r={3} delay={0.2} />
+  </svg>
+);
+
+/* ── 17: AI & Automation ── */
+const AIInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* Brain/chip center */}
+    <motion.rect x={75} y={40} width={50} height={50} rx={10} fill={`hsl(${color} / 0.06)`} stroke={`hsl(${color} / 0.3)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, ease }}
+      style={{ transformOrigin: "100px 65px" }}
+    />
+    <motion.text x={100} y={70} textAnchor="middle" fontSize={16} fontWeight="bold" fill={`hsl(${color} / 0.4)`}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>AI</motion.text>
+    {/* Neural connections */}
+    {[
+      [75, 50, 45, 35], [75, 80, 40, 95], [125, 50, 155, 30], [125, 80, 160, 100],
+      [100, 40, 100, 18], [100, 90, 100, 115],
+    ].map(([x1, y1, x2, y2], i) => (
+      <g key={i}>
+        <motion.line x1={x1} y1={y1} x2={x2} y2={y2} stroke={`hsl(${color} / 0.15)`} strokeWidth={1}
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+          transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
+        />
+        <motion.circle cx={x2} cy={y2} r={4} fill={`hsl(${color} / 0.15)`} stroke={`hsl(${color} / 0.25)`} strokeWidth={0.5}
+          initial={{ scale: 0 }} animate={{ scale: 1 }}
+          transition={{ delay: 0.7 + i * 0.1, ease }}
+          style={{ transformOrigin: `${x2}px ${y2}px` }}
+        />
+      </g>
+    ))}
+    {/* Data pulse */}
+    {[0, 1, 2].map(i => (
+      <motion.circle key={i} cx={100} cy={65} r={25 + i * 15} fill="none" stroke={`hsl(${color} / 0.1)`} strokeWidth={0.5}
+        animate={hovered ? { scale: [1, 1.3, 1], opacity: [0.1, 0, 0.1] } : {}}
+        transition={{ duration: 2, delay: i * 0.5, repeat: Infinity }}
+        style={{ transformOrigin: "100px 65px" }}
+      />
+    ))}
+    <Pulse color={color} cx={170} cy={65} r={3} delay={0.8} />
+  </svg>
+);
+
+/* ── 18: Packaging Design ── */
+const PackagingInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* 3D Box */}
+    <motion.path d="M100 25 L155 50 L155 100 L100 125 L45 100 L45 50 Z" fill={`hsl(${color} / 0.04)`} stroke={`hsl(${color} / 0.25)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6, ease }}
+      style={{ transformOrigin: "100px 75px" }}
+    />
+    {/* Box top */}
+    <motion.path d="M100 25 L155 50 L100 75 L45 50 Z" fill={`hsl(${color} / 0.08)`} stroke={`hsl(${color} / 0.2)`} strokeWidth={1}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+    />
+    {/* Box side lines */}
+    <motion.line x1={100} y1={75} x2={100} y2={125} stroke={`hsl(${color} / 0.15)`} strokeWidth={1}
+      initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.5, duration: 0.4 }}
+    />
+    {/* Label on box */}
+    <motion.rect x={80} y={82} width={35} height={20} rx={2} fill={`hsl(${color} / 0.1)`} stroke={`hsl(${color} / 0.2)`} strokeWidth={0.5}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
+      transform="skewY(-5)"
+    />
+    {/* Sparkle/unboxing effect */}
+    {[0, 1, 2, 3].map(i => {
+      const angle = (i * 90 - 45) * Math.PI / 180;
+      return (
+        <motion.circle key={i}
+          cx={100 + 20 * Math.cos(angle)} cy={25 + 15 * Math.sin(angle)} r={2}
+          fill={`hsl(${color} / 0.4)`}
+          animate={hovered ? {
+            y: [0, -10, 0], opacity: [0, 0.8, 0], scale: [0.5, 1.5, 0.5]
+          } : { opacity: 0 }}
+          transition={{ duration: 1.5, delay: i * 0.2, repeat: Infinity }}
+        />
+      );
+    })}
+    <Pulse color={color} cx={170} cy={35} r={3} delay={0.4} />
+  </svg>
+);
+
 /* ── Map number to component ── */
 const infographicMap: Record<string, React.FC<{ color: string; hovered: boolean }>> = {
   "01": BrandInfographic,
@@ -641,6 +824,11 @@ const infographicMap: Record<string, React.FC<{ color: string; hovered: boolean 
   "11": AccountsInfographic,
   "12": VideoInfographic,
   "13": DigitalMarketingInfographic,
+  "14": SocialMediaInfographic,
+  "15": CopywritingInfographic,
+  "16": PhotographyInfographic,
+  "17": AIInfographic,
+  "18": PackagingInfographic,
 };
 
 interface ServiceInfographicProps {
