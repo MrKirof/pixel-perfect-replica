@@ -104,7 +104,7 @@ const OrbitParticles = () => {
 
 /* ── Glowing rings ── */
 const GlowRing = ({ radius, tilt, speed, color }: { radius: number; tilt: number; speed: number; color: string }) => {
-  const ref = useRef<THREE.Line>(null);
+  const ref = useRef<THREE.Group>(null);
 
   const geometry = useMemo(() => {
     const pts: THREE.Vector3[] = [];
@@ -115,15 +115,17 @@ const GlowRing = ({ radius, tilt, speed, color }: { radius: number; tilt: number
     return new THREE.BufferGeometry().setFromPoints(pts);
   }, [radius]);
 
+  const material = useMemo(() => new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.12 }), [color]);
+  const line = useMemo(() => new THREE.Line(geometry, material), [geometry, material]);
+
   useFrame(({ clock }) => {
     if (ref.current) ref.current.rotation.y = clock.getElapsedTime() * speed;
   });
 
   return (
-    <line ref={ref as any} rotation={[tilt, 0, 0]}>
-      <primitive object={geometry} attach="geometry" />
-      <lineBasicMaterial color={color} transparent opacity={0.12} />
-    </line>
+    <group ref={ref} rotation={[tilt, 0, 0]}>
+      <primitive object={line} />
+    </group>
   );
 };
 
