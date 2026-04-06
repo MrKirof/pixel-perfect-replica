@@ -294,7 +294,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative py-12 md:py-16 text-center md:text-left md:pl-10 first:md:pl-0"
+                className="group relative py-8 md:py-10 text-center md:text-left md:pl-10 first:md:pl-0"
               >
                 {i > 0 && <div className="hidden md:block absolute left-0 top-8 bottom-8 w-px" style={{ background: 'linear-gradient(to bottom, transparent, #e0e0e0, transparent)' }} />}
                 {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px" style={{ background: 'linear-gradient(to right, transparent, #e0e0e0, transparent)' }} />}
