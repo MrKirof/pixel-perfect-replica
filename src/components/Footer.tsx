@@ -70,7 +70,7 @@ const Footer = () => (
             <h4 className="mb-5 font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">
               Navigation
             </h4>
-            <nav className="grid gap-3" aria-label="Footer navigation">
+            <nav className="grid gap-3" aria-label="Footer navigation links">
               {navLinks.map((item) => (
                 <Link
                   key={item.label}
