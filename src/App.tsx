@@ -12,6 +12,7 @@ import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import BookCallSection from "@/components/BookCallSection";
 import StartProjectPopup from "@/components/StartProjectPopup";
+import QuotePopup from "@/components/QuotePopup";
 
 const FloatingRocks = lazy(() => import("@/components/FloatingRocks"));
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -43,12 +44,23 @@ const ScrollToTop = () => {
 const AppContent = () => {
   const [bookCallOpen, setBookCallOpen] = useState(false);
   const [startProjectOpen, setStartProjectOpen] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quotePlan, setQuotePlan] = useState<{ planName: string; features: string[] } | null>(null);
   const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
 
   useEffect(() => {
-    const handler = () => setStartProjectOpen(true);
-    window.addEventListener('open-start-project', handler);
-    return () => window.removeEventListener('open-start-project', handler);
+    const handleStartProject = () => setStartProjectOpen(true);
+    const handleQuote = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      setQuotePlan(detail);
+      setQuoteOpen(true);
+    };
+    window.addEventListener('open-start-project', handleStartProject);
+    window.addEventListener('open-quote', handleQuote);
+    return () => {
+      window.removeEventListener('open-start-project', handleStartProject);
+      window.removeEventListener('open-quote', handleQuote);
+    };
   }, []);
   return (
     <>
@@ -83,6 +95,11 @@ const AppContent = () => {
       <Dialog open={startProjectOpen} onOpenChange={setStartProjectOpen}>
         <DialogContent className="max-w-6xl w-[95vw] p-0 border-none bg-transparent overflow-y-auto max-h-[90vh] [&>button]:text-white [&>button]:z-50">
           <StartProjectPopup />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={quoteOpen} onOpenChange={setQuoteOpen}>
+        <DialogContent className="max-w-lg w-[95vw] p-0 border-none bg-transparent overflow-y-auto max-h-[90vh] [&>button]:text-white [&>button]:z-50">
+          <QuotePopup planName={quotePlan?.planName || null} features={quotePlan?.features || []} />
         </DialogContent>
       </Dialog>
       <Suspense fallback={<div className="min-h-screen" />}>
