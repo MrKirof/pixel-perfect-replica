@@ -98,8 +98,8 @@ const Meteor = ({ cfg }: { cfg: MeteorCfg }) => {
     return new THREE.CanvasTexture(c);
   }, []);
 
-  // Sphere interior radius — meteors travel within this
-  const R = 1.25;
+  // Sphere visual radius is ~1.4, meteors travel across front face
+  const R = 1.0;
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return;
