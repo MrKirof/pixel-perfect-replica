@@ -160,7 +160,7 @@ const About = () => {
                       In 2013, Mareful Kirof walked away from a comfortable career to follow a simple goal. Building brands that don't just exist, but <span className="text-white font-semibold">get noticed</span>. What started as a one-man studio in a tiny apartment became <span className="text-white font-semibold">MrKirof</span>, a full-service creative agency.
                     </p>
                     <p>
-                      His philosophy is pretty straightforward: if it doesn't make the client's say wow, it doesn't ship. That high standard has attracted <span className="text-white font-semibold">1,500+ clients across 14 countries</span>, built a remote team of 20 specialists spanning 13 disciplines, and delivered <span className="text-white font-semibold">3,000+ projects</span> without missing a single deadline.
+                      His philosophy is pretty straightforward: if it doesn't make the client's say wow, it doesn't ship. That high standard has attracted <span className="text-white font-semibold">1,500+ clients across 14 countries</span>, built a remote team of 20 specialists spanning 18 disciplines, and delivered <span className="text-white font-semibold">3,000+ projects</span> without missing a single deadline.
                     </p>
                     <p>
                       Mareful doesn't just run MrKirof. He pays close attention to every detail, every pixel, every word. Average was never good enough.
