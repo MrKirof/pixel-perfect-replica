@@ -20,7 +20,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden">
+    <section className="relative min-h-screen flex flex-col overflow-hidden px-0">
       {/* Star particles */}
       <HeroScene />
 
