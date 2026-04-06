@@ -20,7 +20,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 );
 
 const team = [
-  
+  { name: "FarHan Rayyan", role: "Director & COO", handle: "farhanrayyan", bio: "Director and COO overseeing operations, strategy, and delivery across all departments.", image: farhanImg, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)" },
   { name: "Sophia Chen", role: "Creative Director", handle: "sophiachen", bio: "10+ years shaping brands that win awards and hearts. Previously led design at two Y Combinator startups.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
   { name: "James Okafor", role: "Chief Financial Officer", handle: "jamesokafor", bio: "CPA with expertise in startup finance. Manages $8M+ in client revenue and internal operations.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #064e3b8c 0%, #10b98144 100%)", glowColor: "rgba(16, 185, 129, 0.5)" },
   { name: "Mia Patel", role: "Brand & Identity Lead", handle: "miapatel", bio: "Turns complex brand challenges into elegant visual systems. 1500+ brand projects delivered.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #831843c0 0%, #ec489944 100%)", glowColor: "rgba(236, 72, 153, 0.5)" },
