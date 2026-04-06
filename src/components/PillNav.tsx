@@ -44,6 +44,7 @@ const PillNav = ({
   const location = useLocation();
   const activeHref = location.pathname;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const circleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const tlRefs = useRef<(gsap.core.Timeline | null)[]>([]);
   const activeTweenRefs = useRef<(gsap.core.Tween | null)[]>([]);
@@ -53,11 +54,30 @@ const PillNav = ({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const navItemsRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const navContainerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Animate nav on route change
+  useEffect(() => {
+    const container = navContainerRef.current;
+    if (container) {
+      gsap.fromTo(container, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease });
+    }
+  }, [location.pathname, ease]);
 
   useEffect(() => {
     const layout = () => {
@@ -177,7 +197,7 @@ const PillNav = ({
   } as React.CSSProperties;
 
   return (
-    <div className="pill-nav-container">
+    <div className={`pill-nav-container ${isScrolled ? 'is-scrolled' : ''}`} ref={navContainerRef}>
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
         {logo && (
           <Link
