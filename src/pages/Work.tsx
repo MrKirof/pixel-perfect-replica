@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, ExternalLink, Layers, Smartphone, Globe, Palette, BookOpen, Car, Scissors, Package } from "lucide-react";
+import { ArrowRight, Globe, Palette, Package, BookOpen, Smartphone, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import SEOHead from "@/components/SEOHead";
+import ProjectLightbox from "@/components/ProjectLightbox";
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
@@ -38,12 +39,44 @@ const projects = [
     tags: ["Web Design", "Dark UI", "Tech"],
   },
   {
+    title: "Leon's Legacy Packaging",
+    category: "Packaging Design",
+    filter: "Packaging",
+    desc: "Gourmet Hushpuppy & Cornbread Mix packaging design with vibrant food photography and bold typography.",
+    image: "/works/packaging-design-leons-legacy.jpg",
+    tags: ["Packaging", "Food", "Retail"],
+  },
+  {
+    title: "The Agitated Agenda Book Cover",
+    category: "Print Design",
+    filter: "Print",
+    desc: "Retro-style book cover design for The Lady Cunningham Chronicles by Candace N Ford.",
+    image: "/works/the-agitated-agenda-book-cover.jpg",
+    tags: ["Book Cover", "Print", "Illustration"],
+  },
+  {
     title: "BeMyTravelMuse Web Design",
     category: "Website Design",
     filter: "Website",
     desc: "Web design concept for BeMyTravelMuse, a travel blog platform with immersive visuals.",
     image: "/works/web-design-concept-for-bemytravelmuse.webp",
     tags: ["Web Design", "Travel", "Blog"],
+  },
+  {
+    title: "AIS Presentation Deck",
+    category: "Print Design",
+    filter: "Print",
+    desc: "Professional PowerPoint template for AIS, an award-winning IT company and security provider.",
+    image: "/works/ais-presentation-deck.jpg",
+    tags: ["Presentation", "Corporate", "Template"],
+  },
+  {
+    title: "Cookie Packaging Design",
+    category: "Packaging Design",
+    filter: "Packaging",
+    desc: "Playful cookie dough packaging for Ree Ree Dee's with charming illustrations and warm colors.",
+    image: "/works/cookie-packaging-design.jpg",
+    tags: ["Packaging", "Food", "Playful"],
   },
   {
     title: "Website Design",
@@ -54,12 +87,44 @@ const projects = [
     tags: ["Web Design", "UI/UX", "Modern"],
   },
   {
+    title: "Valley Pearl Oysters Packaging",
+    category: "Packaging Design",
+    filter: "Packaging",
+    desc: "Premium Malpeque Oysters box packaging with rustic wood-grain aesthetic and detailed die-line layout.",
+    image: "/works/valley-pearl-oysters-packaging.jpg",
+    tags: ["Packaging", "Premium", "Seafood"],
+  },
+  {
+    title: "Origin Website Redesign",
+    category: "Website Design",
+    filter: "Website",
+    desc: "Modern, airy website redesign for Origin Building Group with clean layout and property showcases.",
+    image: "/works/origin-website-redesign.png",
+    tags: ["Web Design", "Real Estate", "Redesign"],
+  },
+  {
     title: "Principled Education Consulting Logo",
     category: "Brand Identity",
     filter: "Branding",
     desc: "Professional logo design for Principled Education Consulting, trustworthy and academic.",
     image: "/works/logo-for-principled-education-consulting.webp",
     tags: ["Logo", "Education", "Consulting"],
+  },
+  {
+    title: "Whiteprint Consulting Website",
+    category: "Website Design",
+    filter: "Website",
+    desc: "Illustrative website design for Whiteprint Consulting with custom artwork and engaging UI.",
+    image: "/works/whiteprint-consulting-website.jpg",
+    tags: ["Web Design", "Illustration", "Consulting"],
+  },
+  {
+    title: "QuantHub SaaS Flyer",
+    category: "Print Design",
+    filter: "Print",
+    desc: "Professional data-driven flyer design for QuantHub, a SaaS data literacy platform.",
+    image: "/works/quanthub-flyer-design.jpg",
+    tags: ["Flyer", "SaaS", "Corporate"],
   },
   {
     title: "Book Cover Design",
@@ -70,12 +135,28 @@ const projects = [
     tags: ["Print", "Book", "Typography"],
   },
   {
+    title: "Johnny Wu Branding",
+    category: "Brand Identity",
+    filter: "Branding",
+    desc: "Luxury monogram branding and business card design for Johnny Wu — entrepreneur, musician, keynote speaker.",
+    image: "/works/johnny-wu-branding.jpg",
+    tags: ["Branding", "Luxury", "Monogram"],
+  },
+  {
     title: "Rokitta Rust Guard Packaging",
     category: "Packaging Design",
     filter: "Packaging",
     desc: "Product packaging design for Rokitta Rust Guard, clean, informative, and shelf-ready.",
     image: "/works/rokitta-rust-guard-packaging.webp",
     tags: ["Packaging", "Product", "Retail"],
+  },
+  {
+    title: "Mission to Saturn Infographic",
+    category: "Print Design",
+    filter: "Print",
+    desc: "Space-themed infographic for Business Growth Systems showcasing company milestones and vision.",
+    image: "/works/mission-to-saturn-infographic.jpg",
+    tags: ["Infographic", "Creative", "Data Viz"],
   },
   {
     title: "Social Media Design",
@@ -129,6 +210,7 @@ const categoryIcons: Record<string, typeof Globe> = {
 
 const Work = () => {
   const [active, setActive] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const filtered = active === "All" ? projects : projects.filter((p) => p.filter === active);
 
   const counts: Record<string, number> = {};
@@ -143,6 +225,14 @@ const Work = () => {
         description="Browse 3000+ projects across website design, branding, packaging, print, and social media. Real work, real impact from MrKirof creative agency."
         path="/work"
       />
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectLightbox project={selectedProject} onClose={() => setSelectedProject(null)} />
+        )}
+      </AnimatePresence>
+
       {/* ── Hero ── */}
       <section className="pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <BackgroundPaths />
@@ -188,14 +278,13 @@ const Work = () => {
       {/* ── Filter + Grid ── */}
       <FadeIn>
         <section className="py-16 md:py-24 relative" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
-          {/* Subtle grid pattern */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{
             backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
             backgroundSize: '60px 60px',
           }} />
 
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-            {/* Filter tabs with counts */}
+            {/* Filter tabs */}
             <div className="flex flex-wrap gap-2 mb-12">
               {filters.map((f) => {
                 const Icon = categoryIcons[f];
@@ -247,8 +336,9 @@ const Work = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.05 }}
-                      className={`group relative overflow-hidden rounded-sm ${spans[i % 7]}`}
+                      className={`group relative overflow-hidden rounded-sm cursor-pointer ${spans[i % 7]}`}
                       data-cursor-hover
+                      onClick={() => setSelectedProject(project)}
                     >
                       <img
                         src={project.image}
@@ -256,12 +346,9 @@ const Work = () => {
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
                       />
-                      {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-50 group-hover:opacity-95 transition-opacity duration-500" />
                       
-                      {/* Content */}
                       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                        {/* Category badge */}
                         <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75">
                           {project.category}
                         </span>
@@ -271,7 +358,6 @@ const Work = () => {
                         <p className="text-white/50 font-body text-xs leading-relaxed max-w-sm translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 mb-3 line-clamp-2">
                           {project.desc}
                         </p>
-                        {/* Tags */}
                         <div className="flex flex-wrap gap-1.5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150">
                           {project.tags.map((t) => (
                             <span key={t} className="font-mono text-xs uppercase tracking-wider text-accent/80 bg-accent/10 px-2 py-0.5 rounded-sm">
@@ -281,7 +367,6 @@ const Work = () => {
                         </div>
                       </div>
 
-                      {/* Corner accent */}
                       <div className="absolute top-0 left-0 w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all duration-500">
                         <div className="absolute top-0 left-0 w-full h-[2px] bg-accent" />
                         <div className="absolute top-0 left-0 w-[2px] h-full bg-accent" />
@@ -291,7 +376,6 @@ const Work = () => {
                 })}
               </motion.div>
             </AnimatePresence>
-
           </div>
         </section>
       </FadeIn>
