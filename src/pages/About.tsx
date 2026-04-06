@@ -125,8 +125,8 @@ const About = () => {
                     className="relative z-10 overflow-hidden rounded-lg"
                   >
                     <img
-                      src={marefulImg2}
-                      alt="Mareful Kirof — Founder & COO"
+                      src={farhanImg}
+                      alt="FarHan Rayyan — Director & COO"
                       className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                     />
                     {/* Overlay gradient */}
