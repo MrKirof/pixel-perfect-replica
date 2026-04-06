@@ -278,15 +278,24 @@ const PillNav = ({
               </Link>
             </li>
           ))}
-          {ctaLabel && ctaHref && (
+          {ctaLabel && (
             <li>
-              <Link
-                to={ctaHref}
-                className="mobile-menu-link pill-cta-mobile"
-                onClick={() => { setIsMobileMenuOpen(false); }}
-              >
-                {ctaLabel}
-              </Link>
+              {onCtaClick ? (
+                <button
+                  className="mobile-menu-link pill-cta-mobile w-full text-left"
+                  onClick={() => { setIsMobileMenuOpen(false); onCtaClick(); }}
+                >
+                  {ctaLabel}
+                </button>
+              ) : ctaHref ? (
+                <Link
+                  to={ctaHref}
+                  className="mobile-menu-link pill-cta-mobile"
+                  onClick={() => { setIsMobileMenuOpen(false); }}
+                >
+                  {ctaLabel}
+                </Link>
+              ) : null}
             </li>
           )}
         </ul>
