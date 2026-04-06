@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles, Layout, Code, BookOpen, Tag, Book, Film, Video,
   Megaphone, Search, Table, DollarSign, ArrowRight, CheckCircle2,
   Share2, PenTool, Camera, Bot, Package, BarChart3, X,
-  HelpCircle, User, Mail, MessageSquare, Layers, Send
+  HelpCircle, ArrowLeft, Clock, Zap, Star
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,24 +12,150 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 const services = [
-  { icon: Sparkles, title: "Brand & Identity", number: "01", color: "217 92% 60%", desc: "Build brand systems that communicate personality & trust." },
-  { icon: Layout, title: "UI/UX Design", number: "02", color: "199 89% 48%", desc: "Intuitive, conversion-driven interfaces." },
-  { icon: Code, title: "Web & App Dev", number: "03", color: "152 69% 45%", desc: "Full-stack builds with blazing performance." },
-  { icon: BookOpen, title: "Catalog & Profile", number: "04", color: "280 65% 55%", desc: "Print-ready editorial design." },
-  { icon: Tag, title: "Merchandise Design", number: "05", color: "340 75% 55%", desc: "Custom merch that builds brand recognition." },
-  { icon: Book, title: "Magazine & Book", number: "06", color: "30 85% 55%", desc: "Beautiful layouts for publications." },
-  { icon: Film, title: "Motion Graphics", number: "07", color: "260 70% 60%", desc: "Animated explainers & broadcast motion." },
-  { icon: Megaphone, title: "Product Marketing", number: "08", color: "14 90% 55%", desc: "Campaigns & funnels that drive growth." },
-  { icon: Search, title: "SEO", number: "09", color: "170 75% 40%", desc: "Rank and stay ranked organically." },
-  { icon: Table, title: "Excel & Sheets", number: "10", color: "45 85% 50%", desc: "Custom dashboards & data pipelines." },
-  { icon: DollarSign, title: "Accounts Management", number: "11", color: "120 60% 40%", desc: "Financial tracking & reporting." },
-  { icon: Video, title: "Video Production", number: "12", color: "350 80% 55%", desc: "End-to-end video from concept to delivery." },
-  { icon: BarChart3, title: "Digital Marketing", number: "13", color: "200 80% 50%", desc: "Data-driven multi-channel marketing." },
-  { icon: Share2, title: "Social Media", number: "14", color: "310 70% 55%", desc: "Content planning & community growth." },
-  { icon: PenTool, title: "Copywriting & Content", number: "15", color: "55 80% 50%", desc: "Compelling copy that converts." },
-  { icon: Camera, title: "Photography", number: "16", color: "25 90% 55%", desc: "Professional product & lifestyle shoots." },
-  { icon: Bot, title: "AI & Automation", number: "17", color: "185 75% 45%", desc: "Smart chatbots & workflow automation." },
-  { icon: Package, title: "Packaging Design", number: "18", color: "145 65% 45%", desc: "Eye-catching packaging & unboxing." },
+  {
+    icon: Sparkles, title: "Brand & Identity", number: "01", color: "217 92% 60%",
+    desc: "Build brand systems that communicate personality & trust.",
+    details: "We craft complete brand ecosystems — from logo design and color palettes to typography systems, brand guidelines, and visual language that resonates with your audience.",
+    deliverables: ["Logo & Variations", "Brand Guidelines", "Color System", "Typography Kit", "Brand Collateral"],
+    timeline: "2–4 weeks",
+    popular: true,
+  },
+  {
+    icon: Layout, title: "UI/UX Design", number: "02", color: "199 89% 48%",
+    desc: "Intuitive, conversion-driven interfaces.",
+    details: "Research-backed design that turns visitors into customers. We design wireframes, prototypes, and pixel-perfect interfaces optimized for engagement and usability.",
+    deliverables: ["User Research", "Wireframes", "UI Design", "Prototyping", "Design System"],
+    timeline: "3–6 weeks",
+    popular: true,
+  },
+  {
+    icon: Code, title: "Web & App Dev", number: "03", color: "152 69% 45%",
+    desc: "Full-stack builds with blazing performance.",
+    details: "From landing pages to complex web apps and mobile applications. We build with modern frameworks, ensuring speed, scalability, and clean code.",
+    deliverables: ["Frontend Dev", "Backend API", "Database Design", "Deployment", "Maintenance"],
+    timeline: "4–12 weeks",
+    popular: true,
+  },
+  {
+    icon: BookOpen, title: "Catalog & Profile", number: "04", color: "280 65% 55%",
+    desc: "Print-ready editorial design.",
+    details: "Professionally designed catalogs, company profiles, and brochures that showcase your products and services with stunning layouts.",
+    deliverables: ["Layout Design", "Print-Ready Files", "Digital Version", "Photography Direction", "Copywriting Support"],
+    timeline: "2–3 weeks",
+    popular: false,
+  },
+  {
+    icon: Tag, title: "Merchandise Design", number: "05", color: "340 75% 55%",
+    desc: "Custom merch that builds brand recognition.",
+    details: "T-shirts, mugs, stickers, tote bags — we design merchandise that people actually want to wear and use, turning customers into brand ambassadors.",
+    deliverables: ["Merch Concepts", "Print Files", "Mockups", "Vendor Coordination", "Packaging"],
+    timeline: "1–2 weeks",
+    popular: false,
+  },
+  {
+    icon: Book, title: "Magazine & Book", number: "06", color: "30 85% 55%",
+    desc: "Beautiful layouts for publications.",
+    details: "Editorial design for magazines, books, annual reports, and newsletters. We handle typography, layout, and production-ready files.",
+    deliverables: ["Cover Design", "Interior Layout", "Typography", "Print Prep", "eBook Format"],
+    timeline: "3–6 weeks",
+    popular: false,
+  },
+  {
+    icon: Film, title: "Motion Graphics", number: "07", color: "260 70% 60%",
+    desc: "Animated explainers & broadcast motion.",
+    details: "Eye-catching animations for social media, presentations, ads, and broadcast. From logo reveals to full explainer videos with motion design.",
+    deliverables: ["Storyboard", "Animation", "Sound Design", "Multiple Formats", "Source Files"],
+    timeline: "2–4 weeks",
+    popular: false,
+  },
+  {
+    icon: Megaphone, title: "Product Marketing", number: "08", color: "14 90% 55%",
+    desc: "Campaigns & funnels that drive growth.",
+    details: "Strategic marketing campaigns including landing pages, email sequences, ad creatives, and conversion funnels designed to maximize ROI.",
+    deliverables: ["Strategy Doc", "Campaign Creatives", "Landing Pages", "Email Sequences", "Analytics Setup"],
+    timeline: "2–4 weeks",
+    popular: false,
+  },
+  {
+    icon: Search, title: "SEO", number: "09", color: "170 75% 40%",
+    desc: "Rank and stay ranked organically.",
+    details: "Technical SEO audits, keyword research, on-page optimization, content strategy, and link building to boost your organic search visibility.",
+    deliverables: ["SEO Audit", "Keyword Research", "On-Page Optimization", "Content Plan", "Monthly Reports"],
+    timeline: "Ongoing",
+    popular: false,
+  },
+  {
+    icon: Table, title: "Excel & Sheets", number: "10", color: "45 85% 50%",
+    desc: "Custom dashboards & data pipelines.",
+    details: "Advanced spreadsheet solutions — custom dashboards, automated reports, data analysis templates, and workflow automation with Google Sheets or Excel.",
+    deliverables: ["Custom Templates", "Automated Reports", "Data Dashboards", "Macros/Scripts", "Training"],
+    timeline: "1–2 weeks",
+    popular: false,
+  },
+  {
+    icon: DollarSign, title: "Accounts Management", number: "11", color: "120 60% 40%",
+    desc: "Financial tracking & reporting.",
+    details: "Bookkeeping, invoicing, financial reporting, and accounts management to keep your business finances organized and transparent.",
+    deliverables: ["Bookkeeping", "Financial Reports", "Invoice Management", "Tax Preparation", "Budget Planning"],
+    timeline: "Ongoing",
+    popular: false,
+  },
+  {
+    icon: Video, title: "Video Production", number: "12", color: "350 80% 55%",
+    desc: "End-to-end video from concept to delivery.",
+    details: "Complete video production — scripting, shooting, editing, color grading, and delivery. Corporate videos, ads, testimonials, and social content.",
+    deliverables: ["Script & Concept", "Filming", "Editing & Color", "Sound Mixing", "Final Delivery"],
+    timeline: "2–6 weeks",
+    popular: true,
+  },
+  {
+    icon: BarChart3, title: "Digital Marketing", number: "13", color: "200 80% 50%",
+    desc: "Data-driven multi-channel marketing.",
+    details: "Facebook, Google, Instagram, LinkedIn ads and campaigns. We plan, execute, and optimize multi-channel digital marketing strategies.",
+    deliverables: ["Ad Strategy", "Campaign Setup", "Creative Assets", "A/B Testing", "Performance Reports"],
+    timeline: "Ongoing",
+    popular: true,
+  },
+  {
+    icon: Share2, title: "Social Media", number: "14", color: "310 70% 55%",
+    desc: "Content planning & community growth.",
+    details: "Content calendars, post design, community management, and growth strategies for Instagram, Facebook, LinkedIn, TikTok, and more.",
+    deliverables: ["Content Calendar", "Post Designs", "Community Management", "Growth Strategy", "Analytics"],
+    timeline: "Ongoing",
+    popular: false,
+  },
+  {
+    icon: PenTool, title: "Copywriting & Content", number: "15", color: "55 80% 50%",
+    desc: "Compelling copy that converts.",
+    details: "Website copy, blog posts, ad copy, email newsletters, and content strategy. Words that connect with your audience and drive action.",
+    deliverables: ["Website Copy", "Blog Articles", "Ad Copy", "Email Content", "Content Strategy"],
+    timeline: "1–3 weeks",
+    popular: false,
+  },
+  {
+    icon: Camera, title: "Photography", number: "16", color: "25 90% 55%",
+    desc: "Professional product & lifestyle shoots.",
+    details: "Product photography, lifestyle shoots, corporate headshots, and event coverage. Professional editing and retouching included.",
+    deliverables: ["Photo Shoot", "Retouching", "Multiple Formats", "Usage Rights", "Raw Files"],
+    timeline: "1–2 weeks",
+    popular: false,
+  },
+  {
+    icon: Bot, title: "AI & Automation", number: "17", color: "185 75% 45%",
+    desc: "Smart chatbots & workflow automation.",
+    details: "Custom AI chatbots, workflow automation, CRM integrations, and intelligent tools that save time and improve customer experience.",
+    deliverables: ["AI Chatbot", "Workflow Automation", "CRM Integration", "Custom Tools", "Training & Docs"],
+    timeline: "3–6 weeks",
+    popular: false,
+  },
+  {
+    icon: Package, title: "Packaging Design", number: "18", color: "145 65% 45%",
+    desc: "Eye-catching packaging & unboxing.",
+    details: "Product packaging, box design, label design, and unboxing experiences that stand out on shelves and delight customers.",
+    deliverables: ["Packaging Concept", "Dieline & Layout", "3D Mockups", "Print-Ready Files", "Vendor Specs"],
+    timeline: "2–4 weeks",
+    popular: false,
+  },
 ];
 
 type Step = "select" | "details" | "confirmed";
@@ -51,16 +177,141 @@ const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: 
   />
 );
 
+const ServiceDetailPanel = ({
+  service,
+  isSelected,
+  onToggle,
+  onClose,
+}: {
+  service: typeof services[0];
+  isSelected: boolean;
+  onToggle: () => void;
+  onClose: () => void;
+}) => {
+  const Icon = service.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95, y: 20 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="col-span-full rounded-2xl border border-accent/20 bg-accent/[0.04] backdrop-blur-sm p-6 relative overflow-hidden"
+    >
+      {/* Background glow */}
+      <div
+        className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none opacity-20 blur-3xl"
+        style={{ background: `hsl(${service.color})` }}
+      />
+
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-5">
+          <div className="flex items-center gap-4">
+            <motion.div
+              className="w-14 h-14 rounded-2xl flex items-center justify-center relative"
+              style={{ backgroundColor: `hsl(${service.color} / 0.15)` }}
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Icon size={26} style={{ color: `hsl(${service.color})` }} />
+            </motion.div>
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50 mb-1">
+                Service {service.number}
+              </div>
+              <h3 className="font-display text-xl font-bold text-foreground">{service.title}</h3>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 rounded-full bg-white/[0.05] border border-border/20 flex items-center justify-center hover:bg-white/[0.1] transition-colors"
+          >
+            <X size={14} className="text-muted-foreground" />
+          </button>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-muted-foreground/80 leading-relaxed mb-5 max-w-2xl">
+          {service.details}
+        </p>
+
+        {/* Info row */}
+        <div className="flex flex-wrap gap-4 mb-5">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-border/10">
+            <Clock size={13} className="text-muted-foreground/50" />
+            <span className="font-mono text-[11px] text-muted-foreground/70">{service.timeline}</span>
+          </div>
+          {service.popular && (
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent/10 border border-accent/20">
+              <Star size={13} className="text-accent" />
+              <span className="font-mono text-[11px] text-accent">Popular</span>
+            </div>
+          )}
+        </div>
+
+        {/* Deliverables */}
+        <div className="mb-6">
+          <h4 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50 mb-3">
+            What you get
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {service.deliverables.map((item, i) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05, duration: 0.3 }}
+                className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/[0.04] border border-border/15"
+              >
+                <Zap size={11} style={{ color: `hsl(${service.color})` }} />
+                <span className="font-body text-xs text-foreground/80">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Select button */}
+        <motion.button
+          onClick={onToggle}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className={cn(
+            "px-6 py-2.5 rounded-full font-display font-bold text-sm transition-all duration-300 flex items-center gap-2",
+            isSelected
+              ? "bg-accent/20 text-accent border border-accent/30"
+              : "bg-accent text-accent-foreground"
+          )}
+        >
+          {isSelected ? (
+            <>
+              <CheckCircle2 size={15} /> Selected
+            </>
+          ) : (
+            <>
+              <ArrowRight size={15} /> Select This Service
+            </>
+          )}
+        </motion.button>
+      </div>
+    </motion.div>
+  );
+};
+
 const StartProjectPopup = () => {
   const [step, setStep] = useState<Step>("select");
   const [selected, setSelected] = useState<string[]>([]);
   const [otherText, setOtherText] = useState("");
+  const [expandedService, setExpandedService] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", company: "", budget: "", message: "" });
 
   const toggleService = (title: string) => {
     setSelected(prev =>
       prev.includes(title) ? prev.filter(s => s !== title) : [...prev, title]
     );
+  };
+
+  const handleCardClick = (title: string) => {
+    setExpandedService(prev => (prev === title ? null : title));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -72,8 +323,6 @@ const StartProjectPopup = () => {
     setStep("confirmed");
     toast.success("Project request submitted! We'll get back to you within 24 hours.");
   };
-
-  const budgetOptions = ["< $1K", "$1K - $5K", "$5K - $15K", "$15K - $50K", "$50K+"];
 
   return (
     <section className="relative py-8 md:py-12 overflow-hidden" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
@@ -135,7 +384,7 @@ const StartProjectPopup = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Select one or more services below — or describe your custom project.
+            Click any service to see full details — then select what you need.
           </motion.p>
 
           <motion.div
@@ -188,55 +437,80 @@ const StartProjectPopup = () => {
                 {services.map((service, i) => {
                   const Icon = service.icon;
                   const isSelected = selected.includes(service.title);
+                  const isExpanded = expandedService === service.title;
                   return (
-                    <motion.button
-                      key={service.title}
-                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ delay: i * 0.03, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      onClick={() => toggleService(service.title)}
-                      className={cn(
-                        "relative group rounded-2xl p-4 text-left transition-all duration-400 border overflow-hidden",
-                        isSelected
-                          ? "border-accent/50 bg-accent/[0.08]"
-                          : "border-border/20 bg-white/[0.02] hover:border-border/40 hover:bg-white/[0.04]"
-                      )}
-                    >
-                      <AnimatePresence>
-                        {isSelected && (
+                    <React.Fragment key={service.title}>
+                      <motion.button
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ delay: i * 0.03, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        onClick={() => handleCardClick(service.title)}
+                        className={cn(
+                          "relative group rounded-2xl p-4 text-left transition-all duration-400 border overflow-hidden",
+                          isExpanded
+                            ? "border-accent/60 bg-accent/[0.12] ring-1 ring-accent/20"
+                            : isSelected
+                              ? "border-accent/50 bg-accent/[0.08]"
+                              : "border-border/20 bg-white/[0.02] hover:border-border/40 hover:bg-white/[0.04]"
+                        )}
+                      >
+                        <AnimatePresence>
+                          {isSelected && (
+                            <motion.div
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              exit={{ scale: 0, opacity: 0 }}
+                              className="absolute top-2 right-2 w-5 h-5 rounded-full bg-accent flex items-center justify-center"
+                            >
+                              <CheckCircle2 size={12} className="text-accent-foreground" />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        <div className="relative mb-3">
                           <motion.div
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0, opacity: 0 }}
-                            className="absolute top-2 right-2 w-5 h-5 rounded-full bg-accent flex items-center justify-center"
+                            className="w-10 h-10 rounded-xl flex items-center justify-center relative"
+                            style={{ backgroundColor: `hsl(${service.color} / 0.1)` }}
+                            whileHover={{ scale: 1.1, rotate: 5 }}
                           >
-                            <CheckCircle2 size={12} className="text-accent-foreground" />
+                            <Icon size={18} style={{ color: `hsl(${service.color})` }} />
                           </motion.div>
+                        </div>
+                        <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/40 mb-1">
+                          {service.number}
+                        </div>
+                        <h3 className="font-display font-bold text-xs text-foreground leading-tight mb-1">
+                          {service.title}
+                        </h3>
+                        <p className="font-body text-[10px] text-muted-foreground/60 leading-relaxed line-clamp-2">
+                          {service.desc}
+                        </p>
+                        {/* View details hint */}
+                        <div className="mt-2 font-mono text-[9px] text-accent/60 flex items-center gap-1 group-hover:text-accent transition-colors">
+                          <ArrowRight size={9} /> View details
+                        </div>
+                      </motion.button>
+
+                      {/* Expanded detail panel - inserted after the card */}
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <ServiceDetailPanel
+                            service={service}
+                            isSelected={isSelected}
+                            onToggle={() => toggleService(service.title)}
+                            onClose={() => setExpandedService(null)}
+                          />
                         )}
                       </AnimatePresence>
-                      <div className="relative mb-3">
-                        <motion.div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center relative"
-                          style={{ backgroundColor: `hsl(${service.color} / 0.1)` }}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                        >
-                          <Icon size={18} style={{ color: `hsl(${service.color})` }} />
-                        </motion.div>
-                      </div>
-                      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/40 mb-1">
-                        {service.number}
-                      </div>
-                      <h3 className="font-display font-bold text-xs text-foreground leading-tight mb-1">
-                        {service.title}
-                      </h3>
-                      <p className="font-body text-[10px] text-muted-foreground/60 leading-relaxed line-clamp-2">
-                        {service.desc}
-                      </p>
-                    </motion.button>
+                    </React.Fragment>
                   );
                 })}
+
+                {/* Other option */}
                 <motion.button
-                  onClick={() => toggleService("Other")}
+                  onClick={() => {
+                    toggleService("Other");
+                    setExpandedService(null);
+                  }}
                   className={cn(
                     "relative group rounded-2xl p-4 text-left transition-all duration-400 border overflow-hidden",
                     selected.includes("Other")
@@ -254,6 +528,7 @@ const StartProjectPopup = () => {
                   <p className="font-body text-[10px] text-muted-foreground/60 leading-relaxed">Describe your unique project idea.</p>
                 </motion.button>
               </div>
+
               <AnimatePresence>
                 {selected.includes("Other") && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="mb-6 overflow-hidden">
@@ -261,6 +536,7 @@ const StartProjectPopup = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 flex-wrap">
                   {selected.map(s => (
@@ -290,7 +566,9 @@ const StartProjectPopup = () => {
                 <Input placeholder="Company / Brand name" value={formData.company} onChange={e => setFormData(p => ({ ...p, company: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl h-11" />
                 <Textarea placeholder="Tell us about your project..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} className="bg-white/[0.04] border-border/20 rounded-xl min-h-[100px]" />
                 <div className="flex justify-between pt-4">
-                  <button type="button" onClick={() => setStep("select")} className="text-muted-foreground">Back</button>
+                  <button type="button" onClick={() => setStep("select")} className="text-muted-foreground flex items-center gap-2">
+                    <ArrowLeft size={14} /> Back
+                  </button>
                   <button type="submit" className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-bold">Submit Project</button>
                 </div>
               </form>
