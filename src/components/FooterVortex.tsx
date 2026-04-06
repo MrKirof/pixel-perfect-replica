@@ -147,7 +147,7 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     if (trailMeshRef.current && posHistory.current.length > 1) {
       const positions = trailGeo.attributes.position.array as Float32Array;
       const hist = posHistory.current;
-      const ribbonWidth = size * 0.8;
+      const ribbonWidth = size * 0.3;
 
       for (let i = 0; i < TRAIL_LENGTH; i++) {
         const p = i < hist.length ? hist[i] : hist[hist.length - 1];
