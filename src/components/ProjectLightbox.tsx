@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { X, ZoomIn } from "lucide-react";
+import { X } from "lucide-react";
 
 interface ProjectLightboxProps {
   project: { title: string; category: string; desc: string; image: string; tags: string[] } | null;
@@ -23,46 +24,44 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
 
   if (!project) return null;
 
-  return (
+  return createPortal(
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center"
+      transition={{ duration: 0.35 }}
+      className="fixed inset-0 flex items-center justify-center"
+      style={{ zIndex: 99999 }}
       onClick={onClose}
     >
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="absolute inset-0 bg-black/95 backdrop-blur-xl"
-      />
+      {/* Dark backdrop */}
+      <div className="absolute inset-0 bg-black/95 backdrop-blur-2xl" />
 
-      {/* Close button */}
+      {/* Close */}
       <motion.button
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.3 }}
+        transition={{ delay: 0.5 }}
         onClick={onClose}
-        className="absolute top-6 right-6 z-[110] w-14 h-14 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+        className="absolute top-6 right-6 w-14 h-14 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/15 transition-all duration-300"
+        style={{ zIndex: 100000 }}
       >
         <X size={22} />
       </motion.button>
 
-      {/* 3D perspective container */}
+      {/* 3D perspective wrapper */}
       <div
-        className="relative z-10 w-full h-full flex items-center justify-center p-6 md:p-12"
-        style={{ perspective: "1500px" }}
+        className="relative w-full h-full flex items-center justify-center p-6 md:p-16"
+        style={{ perspective: "1800px" }}
         onClick={onClose}
       >
         <motion.div
           initial={{
             opacity: 0,
-            scale: 0.3,
-            rotateX: 45,
-            rotateY: -30,
-            y: 200,
+            scale: 0.2,
+            rotateX: 50,
+            rotateY: -25,
+            y: 300,
           }}
           animate={{
             opacity: 1,
@@ -73,129 +72,139 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
           }}
           exit={{
             opacity: 0,
-            scale: 0.5,
-            rotateX: -30,
-            rotateY: 20,
-            y: 100,
+            scale: 0.4,
+            rotateX: -40,
+            rotateY: 15,
+            y: 150,
           }}
           transition={{
-            duration: 0.8,
-            ease: [0.16, 1, 0.3, 1],
+            type: "spring",
+            damping: 25,
+            stiffness: 120,
+            mass: 0.8,
           }}
           className="relative max-w-5xl w-full flex flex-col"
           style={{ transformStyle: "preserve-3d" }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Ambient glow behind card */}
+          {/* Ambient glow */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.4, scale: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            className="absolute -inset-8 bg-accent/15 rounded-3xl blur-3xl -z-10"
-          />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.2 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="absolute -inset-16 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 rounded-3xl blur-[60px] -z-20"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 0.5, scale: 1.1 }}
+            transition={{ delay: 0.3, duration: 1.2 }}
+            className="absolute -inset-12 rounded-3xl blur-[80px] -z-10"
+            style={{ background: "radial-gradient(ellipse at center, hsl(var(--accent) / 0.25), transparent 70%)" }}
           />
 
-          {/* Image container with 3D shadow */}
+          {/* Image with 3D depth */}
           <motion.div
-            className="relative rounded-t-xl overflow-hidden"
+            className="relative overflow-hidden rounded-t-2xl"
             style={{
-              boxShadow: "0 40px 80px -20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.3)",
+              boxShadow: "0 60px 120px -30px rgba(0,0,0,0.9), 0 30px 60px -15px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)",
+              transformStyle: "preserve-3d",
             }}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.4 }}
+            whileHover={{
+              rotateX: 2,
+              rotateY: -2,
+              scale: 1.02,
+              transition: { duration: 0.4, ease: "easeOut" },
+            }}
           >
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-auto max-h-[72vh] object-contain bg-black"
-              initial={{ scale: 1.15, filter: "blur(10px)" }}
-              animate={{ scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full h-auto max-h-[68vh] object-contain bg-black/80"
+              initial={{ scale: 1.2, filter: "blur(20px) brightness(0.5)" }}
+              animate={{ scale: 1, filter: "blur(0px) brightness(1)" }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               draggable={false}
             />
 
-            {/* Zoom hint */}
+            {/* Shine sweep */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="absolute top-4 left-4 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5"
-            >
-              <ZoomIn size={14} className="text-white/70" />
-              <span className="text-white/70 text-xs font-mono">Full Preview</span>
-            </motion.div>
-
-            {/* Reflection/shine effect */}
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: "200%" }}
-              transition={{ delay: 0.5, duration: 1.2, ease: "easeInOut" }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none"
+              initial={{ x: "-120%" }}
+              animate={{ x: "250%" }}
+              transition={{ delay: 0.4, duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)",
+              }}
             />
+
+            {/* Border glow top */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
           </motion.div>
 
-          {/* Info bar */}
+          {/* Info panel */}
           <motion.div
-            initial={{ opacity: 0, y: 20, rotateX: -10 }}
+            initial={{ opacity: 0, y: 30, rotateX: -15 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#111] border border-white/10 backdrop-blur-xl p-6 md:p-8 rounded-b-xl"
+            transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-b-2xl p-6 md:p-8 border border-white/10 border-t-0"
             style={{
-              boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6)",
+              background: "linear-gradient(180deg, rgba(20,20,20,0.98) 0%, rgba(10,10,10,0.99) 100%)",
+              boxShadow: "0 30px 80px -20px rgba(0,0,0,0.7)",
+              transformStyle: "preserve-3d",
+              transform: "translateZ(-10px)",
             }}
           >
             <div className="flex items-start justify-between gap-6 flex-wrap">
               <div className="flex-1 min-w-0">
                 <motion.span
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-2 block"
+                  transition={{ delay: 0.5 }}
+                  className="font-mono text-[10px] uppercase tracking-[0.4em] mb-2 block"
+                  style={{ color: "hsl(var(--accent))" }}
                 >
                   {project.category}
                 </motion.span>
                 <motion.h3
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.65 }}
-                  className="font-display text-xl md:text-2xl font-extrabold text-white tracking-tight"
+                  transition={{ delay: 0.55 }}
+                  className="font-display text-xl md:text-3xl font-extrabold text-white tracking-tight leading-tight"
                 >
                   {project.title}
                 </motion.h3>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  className="text-white/50 text-sm mt-2 max-w-lg leading-relaxed"
+                  transition={{ delay: 0.6 }}
+                  className="text-white/45 text-sm mt-2 max-w-lg leading-relaxed"
                 >
                   {project.desc}
                 </motion.p>
               </div>
               <motion.div
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.75 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.65 }}
                 className="flex flex-wrap gap-2"
               >
-                {project.tags.map((t) => (
-                  <span
+                {project.tags.map((t, i) => (
+                  <motion.span
                     key={t}
-                    className="font-mono text-[10px] uppercase tracking-wider text-accent/90 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + i * 0.05 }}
+                    className="font-mono text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full border"
+                    style={{
+                      color: "hsl(var(--accent) / 0.9)",
+                      backgroundColor: "hsl(var(--accent) / 0.08)",
+                      borderColor: "hsl(var(--accent) / 0.2)",
+                    }}
                   >
                     {t}
-                  </span>
+                  </motion.span>
                 ))}
               </motion.div>
             </div>
           </motion.div>
         </motion.div>
       </div>
-    </motion.div>
+    </motion.div>,
+    document.body
   );
 };
 
