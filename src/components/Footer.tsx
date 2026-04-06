@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import FooterOrb from "./FooterOrb";
+import { lazy, Suspense } from "react";
+const FooterVortex = lazy(() => import("./FooterVortex"));
 
 const navLinks = [
   { label: "Home", path: "/" },
