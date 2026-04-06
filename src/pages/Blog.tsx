@@ -33,8 +33,8 @@ const articles = [
   },
   {
     title: "The Founder's Guide to a High-Converting Website",
-    author: "Tariq Hussain",
-    role: "Lead Frontend Developer",
+    author: "Tariful Nafees",
+    role: "Project Manager",
     tag: "Development",
     date: "February 28, 2025",
     read: "8 min",
@@ -88,8 +88,8 @@ const articles = [
   },
   {
     title: "How We Built a Real-Time Dashboard in 3 Weeks",
-    author: "Tariq Hussain",
-    role: "Lead Frontend Developer",
+    author: "Tariful Nafees",
+    role: "Project Manager",
     tag: "Development",
     date: "September 12, 2024",
     read: "12 min",
