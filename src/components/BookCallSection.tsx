@@ -528,7 +528,7 @@ const BookCallSection = () => {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.4 }}
-                              className="w-full relative overflow-hidden bg-accent text-accent-foreground font-display font-bold text-base px-8 py-4 rounded-xl inline-flex items-center justify-center gap-3 group transition-all duration-500"
+                              className="w-full relative overflow-hidden bg-accent text-accent-foreground font-display font-bold text-base px-6 py-2.5 rounded-xl inline-flex items-center justify-center gap-3 group transition-all duration-500"
                               whileHover={{ scale: 1.02, boxShadow: "0 0 40px hsl(var(--accent) / 0.4)" }}
                               whileTap={{ scale: 0.98 }}
                             >

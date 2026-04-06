@@ -405,14 +405,14 @@ const About = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="magnetic-btn bg-accent text-accent-foreground font-display font-extrabold px-12 py-5 rounded-full inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
+                className="magnetic-btn bg-accent text-accent-foreground font-display font-extrabold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
                 data-cursor-hover
               >
                 Get in Touch <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/work"
-                className="magnetic-btn border border-foreground/20 text-foreground font-display font-bold px-10 py-5 rounded-full inline-flex items-center gap-3 text-base hover:border-accent hover:text-accent transition-all duration-500 group"
+                className="magnetic-btn border border-foreground/20 text-foreground font-display font-bold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:border-accent hover:text-accent transition-all duration-500 group"
                 data-cursor-hover
               >
                 See Our Work <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

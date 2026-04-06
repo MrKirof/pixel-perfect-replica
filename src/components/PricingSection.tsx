@@ -192,7 +192,7 @@ const PricingCard = ({
           {/* CTA */}
           <Link
             to="/contact"
-            className={`w-full inline-flex items-center justify-center gap-2 font-display font-bold text-base px-8 py-4 rounded-xl transition-all duration-500 group/btn ${
+            className={`w-full inline-flex items-center justify-center gap-2 font-display font-bold text-base px-6 py-2.5 rounded-xl transition-all duration-500 group/btn ${
               plan.featured
                 ? "bg-accent text-accent-foreground hover:shadow-[0_8px_40px_hsl(var(--accent)/0.35)] hover:-translate-y-0.5"
                 : "bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5"

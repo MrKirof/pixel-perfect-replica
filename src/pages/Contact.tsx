@@ -247,7 +247,7 @@ const Contact = () => {
 
                       <button
                         type="submit"
-                        className="magnetic-btn bg-accent text-accent-foreground font-display font-extrabold px-10 py-5 inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_hsl(var(--accent)/0.3)] transition-all duration-500 group w-full md:w-auto justify-center"
+                        className="magnetic-btn bg-accent text-accent-foreground font-display font-extrabold px-7 py-3 inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_hsl(var(--accent)/0.3)] transition-all duration-500 group w-full md:w-auto justify-center"
                         data-cursor-hover
                       >
                         Send Message

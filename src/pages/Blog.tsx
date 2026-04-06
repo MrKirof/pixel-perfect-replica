@@ -319,7 +319,7 @@ const Blog = () => {
                 className="flex-1 bg-card border border-border px-5 py-4 font-body text-base text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted-foreground/30"
               />
               <button
-                className="magnetic-btn bg-accent text-accent-foreground font-display font-bold px-8 py-4 inline-flex items-center justify-center gap-2 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500"
+                className="magnetic-btn bg-accent text-accent-foreground font-display font-bold px-6 py-2.5 inline-flex items-center justify-center gap-2 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500"
                 data-cursor-hover
               >
                 Subscribe <ArrowRight size={14} />

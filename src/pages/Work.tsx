@@ -309,7 +309,7 @@ const Work = () => {
             </p>
             <Link
               to="/contact"
-              className="magnetic-btn bg-background text-foreground font-display font-extrabold px-12 py-5 rounded-full inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_rgba(0,0,0,0.2)] transition-all duration-500 group"
+              className="magnetic-btn bg-background text-foreground font-display font-extrabold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_rgba(0,0,0,0.2)] transition-all duration-500 group"
               data-cursor-hover
             >
               Start a Conversation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
