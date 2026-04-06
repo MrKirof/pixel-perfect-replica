@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     quote: "Their team is sharp, fast, and incredibly easy to work with. Best agency experience we've had.",
-    name: "Sara Venn",
+    name: "Sarah Williams",
     title: "Growth Lead at Veltro",
     rating: 5,
   },
