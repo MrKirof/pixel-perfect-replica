@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
+import SEOHead from "@/components/SEOHead";
 
 const globalLocations = [
   { x: "15%", y: "38%", city: "Los Angeles", timezone: "PST (UTC-8)", clients: "10+", projects: "15+" },

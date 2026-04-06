@@ -10,6 +10,7 @@ import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import ServiceInfographic from "@/components/ServiceInfographic";
+import SEOHead from "@/components/SEOHead";
 
 const services = [
   {

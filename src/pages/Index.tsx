@@ -272,6 +272,11 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="MrKirof - Creative Agency for Design, Development & Digital Marketing"
+        description="Remote-first creative agency with 20 specialists across 18 disciplines. 1500+ clients worldwide. Brand design, web development, motion graphics, and digital marketing."
+        path="/"
+      />
       <Hero onStartProject={onStartProject} />
 
 
