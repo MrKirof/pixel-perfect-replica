@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import farhanImg from "@/assets/farhan-rayyan.jpg";
+import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
@@ -125,8 +126,8 @@ const About = () => {
                     className="relative z-10 overflow-hidden rounded-lg"
                   >
                     <img
-                      src={farhanImg}
-                      alt="FarHan Rayyan — Director & COO"
+                      src={marefulFounderImg}
+                      alt="Mareful Kirof — Founder & CEO"
                       className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                     />
                     {/* Overlay gradient */}
@@ -146,19 +147,19 @@ const About = () => {
                   transition={{ duration: 0.7, delay: 0.15 }}
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Director</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Founder</span>
                     <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
-                    FarHan <span className="text-gradient">Rayyan</span>
+                    Mareful <span className="text-gradient">Kirof</span>
                   </h2>
-                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Director & COO</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & CEO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
-                      As Director & COO of Kirof, FarHan Rayyan oversees operations, strategy, and delivery across all departments. He ensures the agency runs with precision and every client gets world-class results.
+                      Founded Kirof in 2013 with a simple belief: every business deserves design that doesn't just look good — it speaks and sells. Built the agency from the ground up as a one-person studio.
                     </p>
                     <p>
-                      His leadership has helped scale Kirof to a 20-person team delivering <span className="text-white font-semibold">3,000+ projects</span> across 14 countries — with zero missed deadlines.
+                      Today he leads a 20-person remote team across 3 continents, delivering <span className="text-white font-semibold">3,000+ projects</span> with zero missed deadlines — a record he takes personally.
                     </p>
                   </div>
                   {/* Quick stats */}
@@ -179,7 +180,7 @@ const About = () => {
                     className="magnetic-btn border border-white/20 text-white font-display text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 hover:border-accent hover:text-accent transition-all duration-500 group"
                     data-cursor-hover
                   >
-                    Work with FarHan
+                    Work with Mareful
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
