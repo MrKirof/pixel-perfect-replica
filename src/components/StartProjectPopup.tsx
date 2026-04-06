@@ -157,25 +157,65 @@ const StartProjectPopup = () => {
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: `hsl(${cat.color})` }} />
                       <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60">{cat.name}</h3>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="space-y-2">
                       {cat.services.map(service => {
                         const Icon = service.icon;
-                        const isActive = selected.includes(service.title);
+                        const isExpanded = expandedService === service.title;
+                        const hasSelectedItems = service.items.some(item => selected.includes(item));
+                        const selectedCount = service.items.filter(item => selected.includes(item)).length;
                         return (
-                          <button
-                            key={service.title}
-                            onClick={() => toggle(service.title)}
-                            className={cn(
-                              "flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm transition-all duration-200",
-                              isActive
-                                ? "border-accent/50 bg-accent/10 text-accent"
-                                : "border-border/20 bg-white/[0.03] text-foreground/70 hover:border-border/40 hover:bg-white/[0.06]"
-                            )}
-                          >
-                            <Icon size={15} style={isActive ? { color: `hsl(${cat.color})` } : undefined} className={!isActive ? "text-muted-foreground/50" : ""} />
-                            <span className="font-medium">{service.title}</span>
-                            {isActive && <CheckCircle2 size={13} className="text-accent ml-1" />}
-                          </button>
+                          <div key={service.title}>
+                            <button
+                              onClick={() => toggleExpand(service.title)}
+                              className={cn(
+                                "w-full flex items-center justify-between px-4 py-3 rounded-xl border text-sm transition-all duration-200",
+                                isExpanded || hasSelectedItems
+                                  ? "border-accent/30 bg-accent/[0.06]"
+                                  : "border-border/15 bg-white/[0.02] hover:border-border/30 hover:bg-white/[0.04]"
+                              )}
+                            >
+                              <div className="flex items-center gap-3">
+                                <Icon size={16} style={hasSelectedItems ? { color: `hsl(${cat.color})` } : undefined} className={!hasSelectedItems ? "text-muted-foreground/50" : ""} />
+                                <span className="font-medium text-foreground/80">{service.title}</span>
+                                {selectedCount > 0 && (
+                                  <span className="px-2 py-0.5 rounded-full bg-accent/15 text-accent text-[10px] font-bold">{selectedCount}</span>
+                                )}
+                              </div>
+                              <ChevronRight size={14} className={cn("text-muted-foreground/40 transition-transform duration-200", isExpanded && "rotate-90")} />
+                            </button>
+                            <AnimatePresence>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="flex flex-wrap gap-2 pt-2 pl-4">
+                                    {service.items.map(item => {
+                                      const isActive = selected.includes(item);
+                                      return (
+                                        <button
+                                          key={item}
+                                          onClick={() => toggle(item)}
+                                          className={cn(
+                                            "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-150",
+                                            isActive
+                                              ? "border-accent/40 bg-accent/15 text-accent"
+                                              : "border-border/15 bg-white/[0.03] text-foreground/60 hover:border-border/30 hover:bg-white/[0.06]"
+                                          )}
+                                        >
+                                          {isActive && <CheckCircle2 size={10} className="inline mr-1.5 -mt-px" />}
+                                          {item}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
                         );
                       })}
                     </div>
