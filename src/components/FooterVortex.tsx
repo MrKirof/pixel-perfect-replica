@@ -109,7 +109,7 @@ const FooterVortex = () => (
         filter: "blur(45px)",
       }}
     />
-    <Canvas camera={{ position: [0, 0.3, 5], fov: 42 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+    <Canvas camera={{ position: [0, 0.3, 5.5], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
       <ambientLight intensity={0.15} />
       <directionalLight position={[5, 5, 5]} intensity={0.6} />
       <pointLight position={[-4, 3, -2]} intensity={0.4} color="#6644ff" />
