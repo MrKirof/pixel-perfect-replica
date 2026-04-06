@@ -12,6 +12,7 @@ import FloatingRocks from "@/components/FloatingRocks";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import BookCallSection from "@/components/BookCallSection";
+import StartProjectPopup from "@/components/StartProjectPopup";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
