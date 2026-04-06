@@ -226,10 +226,10 @@ const FooterVortex = () => (
       <MetallicSphere />
 
       {/* Meteors streaking across the sphere */}
-      <Meteor startAngle={0.3} yStart={0.5} speed={0.5} delay={0} size={0.07} />
-      <Meteor startAngle={1.2} yStart={-0.2} speed={0.4} delay={2.5} size={0.05} />
-      <Meteor startAngle={2.5} yStart={0.1} speed={0.6} delay={5} size={0.06} />
-      <Meteor startAngle={0.8} yStart={-0.4} speed={0.35} delay={8} size={0.04} />
+      <Meteor startAngle={0.3} yStart={0.4} speed={0.35} delay={0} size={0.05} />
+      <Meteor startAngle={1.2} yStart={-0.3} speed={0.3} delay={4} size={0.04} />
+      <Meteor startAngle={2.5} yStart={0.1} speed={0.4} delay={7.5} size={0.035} />
+      <Meteor startAngle={0.8} yStart={-0.1} speed={0.25} delay={11} size={0.03} />
 
       <Environment preset="night" />
     </Canvas>
