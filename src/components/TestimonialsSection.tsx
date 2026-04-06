@@ -6,31 +6,31 @@ import StarBorder from "@/components/StarBorder";
 const testimonials = [
   {
     quote: "Kirof changed how we think about our brand. They didn't just design a logo, they built us an identity.",
-    name: "Rania Solis",
+    name: "Jessica Thompson",
     title: "Founder at Noxian",
     rating: 5,
   },
   {
     quote: "Our financial dashboards were delivered on time and built exactly to spec. Couldn't be happier.",
-    name: "Priya Mehta",
+    name: "Michael Anderson",
     title: "Head of Finance at Crestfield",
     rating: 5,
   },
   {
     quote: "The motion graphics they made for our product launch got more engagement than anything we'd ever put out.",
-    name: "Leo Dubois",
+    name: "David Mitchell",
     title: "Marketing Director at Blumora",
     rating: 5,
   },
   {
     quote: "Their team is sharp, fast, and incredibly easy to work with. Best agency experience we've had.",
-    name: "Sara Venn",
+    name: "Sarah Williams",
     title: "Growth Lead at Veltro",
     rating: 5,
   },
   {
     quote: "We tripled our organic traffic in 3 months. The SEO strategy was bulletproof.",
-    name: "Aisha Kone",
+    name: "Emily Parker",
     title: "CMO at Tethyr",
     rating: 5,
   },
