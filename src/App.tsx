@@ -1,3 +1,4 @@
+/* MrKirof Creative Agency - Updated 2026-04-06 */
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
