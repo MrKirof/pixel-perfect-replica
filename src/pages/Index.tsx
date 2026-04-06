@@ -196,7 +196,7 @@ const ServicesSection = () => {
     <section className="relative py-10" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
       <AnimatedGrid />
       <div className="mb-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col items-center text-center gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 flex flex-col items-center text-center gap-4 sm:gap-6">
           <SectionHeading
             tag="Services"
             title="Eighteen disciplines, one team"
