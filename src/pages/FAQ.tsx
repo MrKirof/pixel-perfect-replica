@@ -23,7 +23,7 @@ const faqs = [
   {
     category: "Pricing & Payment",
     items: [
-      { q: "How is pricing structured?", a: "We offer both project-based fixed pricing and monthly retainers. Every engagement starts with a transparent quote — no hidden fees, no surprise invoices. You know exactly what you're paying before we write a single line of code." },
+      { q: "How is pricing structured?", a: "We offer both project-based fixed pricing and monthly retainers. Every engagement starts with a transparent quote with no hidden fees, no surprise invoices. You know exactly what you're paying before we write a single line of code." },
       { q: "Do you offer payment plans?", a: "Yes. For larger projects we typically split payments into milestones: 40% upfront, 30% at midpoint, 30% on delivery. For retainers, it's a simple monthly invoice." },
       { q: "What's your refund policy?", a: "We stand behind our work. If we haven't started production, you get a full refund. Once work begins, we'll work with you until you're satisfied — our 98% client satisfaction rate speaks for itself." },
     ],
