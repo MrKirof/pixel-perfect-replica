@@ -180,6 +180,7 @@ const Blog = () => {
                     <img
                       src={featured.image}
                       alt={featured.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
