@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import SplashCursor from "@/components/SplashCursor";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
@@ -14,14 +14,16 @@ import Footer from "@/components/Footer";
 import BookCallSection from "@/components/BookCallSection";
 import StartProjectPopup from "@/components/StartProjectPopup";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import Index from "./pages/Index.tsx";
-import About from "./pages/About.tsx";
-import Services from "./pages/Services.tsx";
-import Work from "./pages/Work.tsx";
-import Blog from "./pages/Blog.tsx";
-import Contact from "./pages/Contact.tsx";
-import FAQ from "./pages/FAQ.tsx";
-import NotFound from "./pages/NotFound.tsx";
+
+// Lazy-loaded routes for code splitting
+const Index = lazy(() => import("./pages/Index.tsx"));
+const About = lazy(() => import("./pages/About.tsx"));
+const Services = lazy(() => import("./pages/Services.tsx"));
+const Work = lazy(() => import("./pages/Work.tsx"));
+const Blog = lazy(() => import("./pages/Blog.tsx"));
+const Contact = lazy(() => import("./pages/Contact.tsx"));
+const FAQ = lazy(() => import("./pages/FAQ.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
 
