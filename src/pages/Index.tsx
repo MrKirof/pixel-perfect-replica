@@ -395,9 +395,9 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
 
             {/* Heading */}
             <motion.h2
-              className="font-display font-extrabold mb-8 leading-[0.85] tracking-tight"
-              style={{ fontSize: "2.25rem" }}
+              className="font-display font-extrabold mb-8 leading-[0.85] tracking-tight text-xl sm:text-2xl md:text-[2.25rem]"
               initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
