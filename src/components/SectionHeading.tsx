@@ -34,7 +34,7 @@ const SectionHeading = ({ tag, title, description, align = "left", number }: Sec
 
     <div className="overflow-hidden">
       <motion.h2
-        className="font-display text-3xl font-extrabold leading-[0.9] tracking-tight max-w-5xl"
+        className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight max-w-5xl"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
