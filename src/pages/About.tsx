@@ -366,16 +366,20 @@ const About = () => {
                 >
                   <ProfileCard
                     avatarUrl={member.image}
-                    name={member.name}
-                    title={member.role}
+                    name=""
+                    title=""
                     handle={member.handle}
                     status={i === 0 ? "Director" : "Team"}
-                    showUserInfo={true}
+                    showUserInfo={false}
                     innerGradient={member.gradient}
                     behindGlowColor={member.glowColor}
                     behindGlowSize="60%"
                     enableTilt={true}
                   />
+                  <div className="text-center mt-4">
+                    <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
+                    <p className="text-sm text-muted-foreground">{member.role}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
