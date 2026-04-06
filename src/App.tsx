@@ -12,6 +12,7 @@ import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import BookCallSection from "@/components/BookCallSection";
 import StartProjectPopup from "@/components/StartProjectPopup";
+import QuotePopup from "@/components/QuotePopup";
 
 const FloatingRocks = lazy(() => import("@/components/FloatingRocks"));
 import { Dialog, DialogContent } from "@/components/ui/dialog";
