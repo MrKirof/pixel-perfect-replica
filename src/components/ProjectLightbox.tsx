@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Move } from "lucide-react";
 
 interface ProjectLightboxProps {
   project: { title: string; category: string; desc: string; image: string; tags: string[] } | null;
@@ -10,15 +10,62 @@ interface ProjectLightboxProps {
 
 const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
   const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStart = useRef({ x: 0, y: 0 });
+  const panStart = useRef({ x: 0, y: 0 });
   const imgContainerRef = useRef<HTMLDivElement>(null);
 
   const handleWheel = useCallback((e: WheelEvent) => {
     e.preventDefault();
     setZoom((prev) => {
       const next = prev - e.deltaY * 0.001;
-      return Math.min(Math.max(next, 1), 3);
+      const clamped = Math.min(Math.max(next, 1), 3);
+      if (clamped <= 1) setPan({ x: 0, y: 0 });
+      return clamped;
     });
   }, []);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (zoom <= 1) return;
+    e.preventDefault();
+    setIsDragging(true);
+    dragStart.current = { x: e.clientX, y: e.clientY };
+    panStart.current = { ...pan };
+  }, [zoom, pan]);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStart.current.x;
+    const dy = e.clientY - dragStart.current.y;
+    setPan({
+      x: panStart.current.x + dx,
+      y: panStart.current.y + dy,
+    });
+  }, [isDragging]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Touch support
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (zoom <= 1 || e.touches.length !== 1) return;
+    setIsDragging(true);
+    dragStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    panStart.current = { ...pan };
+  }, [zoom, pan]);
+
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (!isDragging || e.touches.length !== 1) return;
+    e.preventDefault();
+    const dx = e.touches[0].clientX - dragStart.current.x;
+    const dy = e.touches[0].clientY - dragStart.current.y;
+    setPan({
+      x: panStart.current.x + dx,
+      y: panStart.current.y + dy,
+    });
+  }, [isDragging]);
 
   useEffect(() => {
     if (!project) return;
@@ -27,6 +74,10 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handler);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleMouseUp);
 
     const container = imgContainerRef.current;
     if (container) {
@@ -36,15 +87,19 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handler);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleMouseUp);
       if (container) {
         container.removeEventListener("wheel", handleWheel);
       }
     };
-  }, [project, onClose, handleWheel]);
+  }, [project, onClose, handleWheel, handleMouseMove, handleMouseUp, handleTouchMove]);
 
-  // Reset zoom when project changes
   useEffect(() => {
     setZoom(1);
+    setPan({ x: 0, y: 0 });
   }, [project]);
 
   if (!project) return null;
@@ -59,7 +114,7 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
       style={{ zIndex: 99999 }}
       onClick={onClose}
     >
-      {/* Dark backdrop */}
+      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -79,36 +134,38 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
         <X size={20} />
       </motion.button>
 
-      {/* Zoom indicator */}
-      {zoom > 1 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-xs text-white/50 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10"
-          style={{ zIndex: 100000 }}
-        >
-          {Math.round(zoom * 100)}% — Scroll to zoom
-        </motion.div>
-      )}
+      {/* Hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] text-white/40 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 flex items-center gap-2"
+        style={{ zIndex: 100000 }}
+      >
+        {zoom > 1 ? (
+          <>
+            <Move size={12} />
+            {Math.round(zoom * 100)}% — Drag to pan, scroll to zoom
+          </>
+        ) : (
+          "Scroll to zoom in"
+        )}
+      </motion.div>
 
       {/* Content */}
       <div
         className="relative w-full h-full flex items-center justify-center p-6 md:p-12"
-        style={{ perspective: "1200px" }}
         onClick={onClose}
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 60 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 40 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.16, 1, 0.3, 1],
-          }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-5xl w-full flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Ambient glow */}
+          {/* Glow */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
@@ -117,31 +174,32 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
             style={{ background: "radial-gradient(ellipse at center, hsl(var(--accent) / 0.2), transparent 70%)" }}
           />
 
-          {/* Image container with scroll zoom */}
+          {/* Image with zoom + drag */}
           <div
             ref={imgContainerRef}
-            className="relative overflow-hidden rounded-t-2xl cursor-zoom-in"
+            className="relative overflow-hidden rounded-t-2xl"
             style={{
               boxShadow: "0 40px 80px -20px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08)",
+              cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in",
             }}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
           >
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-auto max-h-[68vh] object-contain bg-black/80 select-none"
+              className="w-full h-auto max-h-[68vh] object-contain bg-black/80 select-none pointer-events-none"
               initial={{ filter: "blur(8px) brightness(0.6)" }}
-              animate={{
-                filter: "blur(0px) brightness(1)",
-                scale: zoom,
-              }}
-              transition={{
-                filter: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-                scale: { duration: 0.25, ease: "easeOut" },
+              animate={{ filter: "blur(0px) brightness(1)" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
+                transition: isDragging ? "none" : "transform 0.2s ease-out",
               }}
               draggable={false}
             />
 
-            {/* Shine sweep - plays once */}
+            {/* Shine sweep */}
             <motion.div
               initial={{ x: "-120%" }}
               animate={{ x: "250%" }}
@@ -152,11 +210,10 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
               }}
             />
 
-            {/* Top border glow */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
           </div>
 
-          {/* Info panel */}
+          {/* Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
