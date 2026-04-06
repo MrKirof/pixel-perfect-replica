@@ -9,6 +9,7 @@ import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
+import SEOHead from "@/components/SEOHead";
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
