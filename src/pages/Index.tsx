@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Layout, Code, Film, Trophy, Globe, CheckCircle, Star, Megaphone, Video, Palette, BarChart3, PenTool, Camera } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Layout, Code, Film, Trophy, Globe, CheckCircle, Star, Megaphone, Video, PenTool, Camera, BarChart3 } from "lucide-react";
 import AnimatedGrid from "@/components/AnimatedGrid";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from "react";

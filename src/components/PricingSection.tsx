@@ -39,10 +39,10 @@ const plans = [
   },
   {
     name: "Enterprise",
-    tagline: "All 11 disciplines with full business support",
+    tagline: "All 18 disciplines with full business support",
     icon: Rocket,
     features: [
-      "All 11 services included",
+      "All 18 services included",
       "Excel & Google Sheets Solutions",
       "Accounts Management",
       "Dedicated account manager",

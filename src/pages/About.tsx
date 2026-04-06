@@ -202,8 +202,8 @@ const About = () => {
                   <p>
                     Founded in 2013, Kirof started as a solo design studio with one belief:
                     <span className="text-foreground font-semibold"> great work changes how people see a business.</span> Today
-                    we're a 20-person remote team delivering across 11 disciplines, from brand identity
-                    and web development to financial management and editorial design.
+                    we're a 20-person remote team delivering across 18 disciplines, from brand identity
+                    and web development to AI automation, video production, and editorial design.
                   </p>
                   <p>
                     We've worked with over 1500 clients, from bootstrapped founders to established enterprises
