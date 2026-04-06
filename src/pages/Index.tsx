@@ -101,7 +101,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
               <service.icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
             </div>
           </div>
-          <h3 className="font-display text-3xl md:text-4xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
+          <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
             {service.title}
           </h3>
           <p className="text-muted-foreground font-body text-base leading-relaxed mb-auto line-clamp-2">
