@@ -4,12 +4,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
+import { useState } from "react";
 import SplashCursor from "@/components/SplashCursor";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
 import FloatingRocks from "@/components/FloatingRocks";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
+import BookCallSection from "@/components/BookCallSection";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import Services from "./pages/Services.tsx";
