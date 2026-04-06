@@ -156,10 +156,13 @@ const About = () => {
                   <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & CEO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
-                      Founded Kirof in 2013 with a simple belief: every business deserves design that doesn't just look good — it speaks and sells. Built the agency from the ground up as a one-person studio.
+                      In 2013, Mareful Kirof walked away from a comfortable career to chase an obsession — building brands that don't just exist, but <span className="text-white font-semibold">demand attention</span>. What started as a one-man studio in a tiny apartment became <span className="text-white font-semibold">MrKirof</span>, a full-service creative powerhouse.
                     </p>
                     <p>
-                      Today he leads a 20-person remote team across 3 continents, delivering <span className="text-white font-semibold">3,000+ projects</span> with zero missed deadlines — a record he takes personally.
+                      His philosophy is brutally simple: if it doesn't make the client's jaw drop, it doesn't ship. That relentless standard has attracted <span className="text-white font-semibold">1,500+ clients across 14 countries</span>, built a remote team of 20 specialists spanning 13 disciplines, and delivered <span className="text-white font-semibold">3,000+ projects</span> — without missing a single deadline.
+                    </p>
+                    <p>
+                      Mareful doesn't just run MrKirof — he obsesses over every detail, every pixel, every word. Because average was never an option.
                     </p>
                   </div>
                   {/* Quick stats */}
