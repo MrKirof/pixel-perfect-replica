@@ -132,20 +132,6 @@ const About = () => {
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   </motion.div>
-                  {/* Secondary image — floating offset */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 30, y: 20 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute -bottom-6 -right-6 md:-right-10 w-[45%] z-20 rounded-lg overflow-hidden border-2 border-background shadow-2xl"
-                  >
-                    <img
-                      src={marefulImg1}
-                      alt="Mareful Kirof"
-                      className="w-full aspect-square object-cover object-top"
-                    />
-                  </motion.div>
                   {/* Decorative accent line */}
                   <div className="absolute -left-4 top-8 w-1 h-24 bg-accent/40 rounded-full" />
                 </div>
