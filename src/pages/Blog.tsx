@@ -134,7 +134,7 @@ const Blog = () => {
   return (
     <PageTransition>
       {/* ── Hero ── */}
-      <section className="pt-32 md:pt-44 pb-24 md:pb-36 relative overflow-hidden">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -200,7 +200,7 @@ const Blog = () => {
 
       {/* ── Category Filter + Articles ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36">
+        <section className="surface py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             {/* Search + Category pills */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-16">
@@ -299,7 +299,7 @@ const Blog = () => {
 
       {/* ── Newsletter CTA ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36 relative">
+        <section className="surface py-16 md:py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 text-center">
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-accent mb-8">
               <span className="w-8 h-px bg-accent" />

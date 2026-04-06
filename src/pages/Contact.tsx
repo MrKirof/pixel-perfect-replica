@@ -80,7 +80,7 @@ const Contact = () => {
   return (
     <PageTransition>
       {/* ── Hero ── */}
-      <section className="pt-32 md:pt-44 pb-24 md:pb-36 relative overflow-hidden">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -132,7 +132,7 @@ const Contact = () => {
 
       {/* ── Form + FAQ ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36">
+        <section className="surface py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
               {/* Form */}
@@ -341,7 +341,7 @@ const Contact = () => {
 
       {/* ── Global Reach ── */}
       <FadeIn>
-        <section className="surface py-24 md:py-36">
+        <section className="surface py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="mb-14 flex items-end justify-between">
               <div>

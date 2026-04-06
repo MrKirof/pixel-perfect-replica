@@ -191,7 +191,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section className="relative py-16" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
+    <section className="relative py-10" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
       <AnimatedGrid />
       <div className="mb-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
@@ -277,7 +277,7 @@ const Index = () => {
 
       {/* ═══════════════════════════ STATS ═══════════════════════════ */}
       <FadeInSection style="blur">
-      <section className="relative py-16 overflow-hidden" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
+      <section className="relative py-10 overflow-hidden" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
         {/* Ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--accent) / 0.04), transparent 70%)' }} />
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
@@ -294,7 +294,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative py-12 md:py-16 text-center md:text-left md:pl-10 first:md:pl-0"
+                className="group relative py-8 md:py-10 text-center md:text-left md:pl-10 first:md:pl-0"
               >
                 {i > 0 && <div className="hidden md:block absolute left-0 top-8 bottom-8 w-px" style={{ background: 'linear-gradient(to bottom, transparent, #e0e0e0, transparent)' }} />}
                 {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px" style={{ background: 'linear-gradient(to right, transparent, #e0e0e0, transparent)' }} />}
@@ -368,7 +368,7 @@ const Index = () => {
         {/* Grid lines */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-        <div className="relative z-10 py-32 md:py-48">
+        <div className="relative z-10 py-16 md:py-24">
           <div className="max-w-7xl mx-auto text-center px-6 md:px-8 lg:px-16">
             {/* Eyebrow */}
             <motion.div

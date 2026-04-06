@@ -118,7 +118,7 @@ const BookCallSection = () => {
   const stepIndex = ["date", "time", "details", "confirmed"].indexOf(step);
 
   return (
-    <section className="relative py-24 md:py-40 overflow-hidden" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
+    <section className="relative py-16 md:py-24 overflow-hidden" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
       {/* Animated background grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: 'linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
 
