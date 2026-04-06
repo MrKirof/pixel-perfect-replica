@@ -16,48 +16,48 @@ const categories = [
     name: "Design",
     color: "217 92% 60%",
     services: [
-      { icon: Sparkles, title: "Brand & Identity" },
-      { icon: Layout, title: "Web & App Design" },
-      { icon: BookOpen, title: "Catalog & Profile" },
-      { icon: Tag, title: "Merchandise Design" },
-      { icon: Book, title: "Magazine & Book" },
-      { icon: Package, title: "Packaging Design" },
+      { icon: Sparkles, title: "Brand & Identity", items: ["Logo Design", "Business Card", "Letterhead", "Brand Guidelines", "Visual Identity"] },
+      { icon: Layout, title: "Web & App Design", items: ["Landing Page", "Full Website", "Mobile App UI", "Dashboard", "Wireframes"] },
+      { icon: BookOpen, title: "Catalog & Profile", items: ["Company Profile", "Product Catalog", "Brochure", "Flyer", "Leaflet"] },
+      { icon: Tag, title: "Merchandise Design", items: ["T-Shirt", "Mug", "Tote Bag", "Sticker", "Cap"] },
+      { icon: Book, title: "Magazine & Book", items: ["Book Cover", "Magazine Layout", "Annual Report", "Newsletter", "eBook"] },
+      { icon: Package, title: "Packaging Design", items: ["Box Design", "Label", "Pouch", "Bottle Wrap", "Unboxing Experience"] },
     ],
   },
   {
     name: "Development",
     color: "152 69% 45%",
     services: [
-      { icon: Code, title: "Web & App Dev" },
-      { icon: Table, title: "Excel & Sheets" },
-      { icon: Bot, title: "AI & Automation" },
+      { icon: Code, title: "Web & App Dev", items: ["React Website", "WordPress", "E-Commerce", "Mobile App", "Custom Web App"] },
+      { icon: Table, title: "Excel & Sheets", items: ["Dashboard", "Automated Report", "Data Template", "Macro/Script", "Google Sheets"] },
+      { icon: Bot, title: "AI & Automation", items: ["Chatbot", "Workflow Automation", "CRM Integration", "AI Tools", "API Integration"] },
     ],
   },
   {
     name: "Marketing",
     color: "14 90% 55%",
     services: [
-      { icon: Megaphone, title: "Product Marketing" },
-      { icon: BarChart3, title: "Digital Marketing" },
-      { icon: Search, title: "SEO" },
-      { icon: Share2, title: "Social Media" },
-      { icon: PenTool, title: "Copywriting & Content" },
+      { icon: Megaphone, title: "Product Marketing", items: ["Campaign Strategy", "Landing Page", "Email Sequence", "Ad Creatives", "Funnel Setup"] },
+      { icon: BarChart3, title: "Digital Marketing", items: ["Facebook Ads", "Google Ads", "Instagram Ads", "LinkedIn Ads", "Analytics Setup"] },
+      { icon: Search, title: "SEO", items: ["SEO Audit", "Keyword Research", "On-Page SEO", "Blog Strategy", "Link Building"] },
+      { icon: Share2, title: "Social Media", items: ["Content Calendar", "Post Design", "Reels/Shorts", "Community Management", "Growth Strategy"] },
+      { icon: PenTool, title: "Copywriting & Content", items: ["Website Copy", "Blog Posts", "Ad Copy", "Email Copy", "Product Descriptions"] },
     ],
   },
   {
     name: "Production",
     color: "350 80% 55%",
     services: [
-      { icon: Film, title: "Motion Graphics" },
-      { icon: Video, title: "Video Production" },
-      { icon: Camera, title: "Photography" },
+      { icon: Film, title: "Motion Graphics", items: ["Logo Animation", "Explainer Video", "Social Media Reel", "Intro/Outro", "Infographic Animation"] },
+      { icon: Video, title: "Video Production", items: ["Corporate Video", "Product Video", "Testimonial", "Event Coverage", "Ad Film"] },
+      { icon: Camera, title: "Photography", items: ["Product Shoot", "Lifestyle Shoot", "Corporate Headshots", "Event Photography", "Food Photography"] },
     ],
   },
   {
     name: "Business",
     color: "120 60% 40%",
     services: [
-      { icon: DollarSign, title: "Accounts Management" },
+      { icon: DollarSign, title: "Accounts Management", items: ["Bookkeeping", "Invoicing", "Financial Reports", "Tax Prep", "Budget Planning"] },
     ],
   },
 ];
@@ -67,12 +67,16 @@ type Step = 1 | 2 | 3;
 const StartProjectPopup = () => {
   const [step, setStep] = useState<Step>(1);
   const [selected, setSelected] = useState<string[]>([]);
+  const [expandedService, setExpandedService] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "" });
 
   const toggle = (title: string) =>
     setSelected(prev =>
       prev.includes(title) ? prev.filter(s => s !== title) : [...prev, title]
     );
+
+  const toggleExpand = (title: string) =>
+    setExpandedService(prev => (prev === title ? null : title));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -153,25 +157,65 @@ const StartProjectPopup = () => {
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: `hsl(${cat.color})` }} />
                       <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60">{cat.name}</h3>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="space-y-2">
                       {cat.services.map(service => {
                         const Icon = service.icon;
-                        const isActive = selected.includes(service.title);
+                        const isExpanded = expandedService === service.title;
+                        const hasSelectedItems = service.items.some(item => selected.includes(item));
+                        const selectedCount = service.items.filter(item => selected.includes(item)).length;
                         return (
-                          <button
-                            key={service.title}
-                            onClick={() => toggle(service.title)}
-                            className={cn(
-                              "flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm transition-all duration-200",
-                              isActive
-                                ? "border-accent/50 bg-accent/10 text-accent"
-                                : "border-border/20 bg-white/[0.03] text-foreground/70 hover:border-border/40 hover:bg-white/[0.06]"
-                            )}
-                          >
-                            <Icon size={15} style={isActive ? { color: `hsl(${cat.color})` } : undefined} className={!isActive ? "text-muted-foreground/50" : ""} />
-                            <span className="font-medium">{service.title}</span>
-                            {isActive && <CheckCircle2 size={13} className="text-accent ml-1" />}
-                          </button>
+                          <div key={service.title}>
+                            <button
+                              onClick={() => toggleExpand(service.title)}
+                              className={cn(
+                                "w-full flex items-center justify-between px-4 py-3 rounded-xl border text-sm transition-all duration-200",
+                                isExpanded || hasSelectedItems
+                                  ? "border-accent/30 bg-accent/[0.06]"
+                                  : "border-border/15 bg-white/[0.02] hover:border-border/30 hover:bg-white/[0.04]"
+                              )}
+                            >
+                              <div className="flex items-center gap-3">
+                                <Icon size={16} style={hasSelectedItems ? { color: `hsl(${cat.color})` } : undefined} className={!hasSelectedItems ? "text-muted-foreground/50" : ""} />
+                                <span className="font-medium text-foreground/80">{service.title}</span>
+                                {selectedCount > 0 && (
+                                  <span className="px-2 py-0.5 rounded-full bg-accent/15 text-accent text-[10px] font-bold">{selectedCount}</span>
+                                )}
+                              </div>
+                              <ChevronRight size={14} className={cn("text-muted-foreground/40 transition-transform duration-200", isExpanded && "rotate-90")} />
+                            </button>
+                            <AnimatePresence>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="flex flex-wrap gap-2 pt-2 pl-4">
+                                    {service.items.map(item => {
+                                      const isActive = selected.includes(item);
+                                      return (
+                                        <button
+                                          key={item}
+                                          onClick={() => toggle(item)}
+                                          className={cn(
+                                            "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-150",
+                                            isActive
+                                              ? "border-accent/40 bg-accent/15 text-accent"
+                                              : "border-border/15 bg-white/[0.03] text-foreground/60 hover:border-border/30 hover:bg-white/[0.06]"
+                                          )}
+                                        >
+                                          {isActive && <CheckCircle2 size={10} className="inline mr-1.5 -mt-px" />}
+                                          {item}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
                         );
                       })}
                     </div>
