@@ -75,7 +75,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         </h1>
 
         {/* Subtitle */}
-        <p className={`text-white/70 font-body font-medium text-base leading-relaxed mb-8 max-w-md transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.5s" }}>
+        <p className={`text-white/70 font-body font-medium text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-md transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.5s" }}>
           20 specialists. 13 disciplines. 1500+ clients across design, development, and financial operations.
         </p>
 
