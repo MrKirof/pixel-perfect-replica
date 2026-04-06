@@ -22,15 +22,8 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 
 const team = [
   { name: "FarHan Rayyan", role: "Director & COO", handle: "farhanrayyan", bio: "Director and COO overseeing operations, strategy, and delivery across all departments.", image: farhanImg, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)" },
-  { name: "Sophia Chen", role: "Creative Director", handle: "sophiachen", bio: "10+ years shaping brands that win awards and hearts. Previously led design at two Y Combinator startups.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
-  { name: "James Okafor", role: "Chief Financial Officer", handle: "jamesokafor", bio: "CPA with expertise in startup finance. Manages $8M+ in client revenue and internal operations.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #064e3b8c 0%, #10b98144 100%)", glowColor: "rgba(16, 185, 129, 0.5)" },
-  { name: "Mia Patel", role: "Brand & Identity Lead", handle: "miapatel", bio: "Turns complex brand challenges into elegant visual systems. 1500+ brand projects delivered.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #831843c0 0%, #ec489944 100%)", glowColor: "rgba(236, 72, 153, 0.5)" },
-  { name: "Tariq Hussain", role: "Lead Frontend Developer", handle: "tariqhussain", bio: "React & TypeScript obsessive. Pixel-perfect or nothing. Ships production code that scales.", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
-  { name: "Kaira Jevenu", role: "UI/UX Design Lead", handle: "kairajevenu", bio: "Turns complex flows into intuitive, delightful experiences. Certified in UX research methodology.", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #60496e8c 0%, #71C4FF44 100%)", glowColor: "rgba(125, 190, 255, 0.5)" },
-  { name: "Ryu Tanaka", role: "Motion Designer", handle: "ryutanaka", bio: "Brings brands to life through cinematic motion & animation. After Effects wizard.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #7c2d128c 0%, #f9731644 100%)", glowColor: "rgba(249, 115, 22, 0.5)" },
-  { name: "Preet Kaur", role: "SEO & Content Strategist", handle: "preetkaur", bio: "Data-driven growth. Tripled organic traffic for 30+ clients. Google-certified.", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #1e3a5f8c 0%, #6366f144 100%)", glowColor: "rgba(99, 102, 241, 0.5)" },
-  { name: "Elena Marsh", role: "Editorial Designer", handle: "elenamarsh", bio: "Award-winning print designer. Magazines, books, and annual reports with impeccable typography.", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #5b21b68c 0%, #d946ef44 100%)", glowColor: "rgba(217, 70, 239, 0.5)" },
-  { name: "Dario Luca", role: "Digital Marketing Lead", handle: "darioluca", bio: "Campaign architect. $8M+ in revenue generated for clients. Performance marketing specialist.", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #14532d8c 0%, #22c55e44 100%)", glowColor: "rgba(34, 197, 94, 0.5)" },
+  { name: "Sophia Chen", role: "Creative Director", handle: "sophiachen", bio: "10+ years shaping brands that win awards and hearts.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
+  { name: "Tariq Hussain", role: "Lead Developer", handle: "tariqhussain", bio: "React & TypeScript obsessive. Pixel-perfect or nothing.", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
 ];
 
 const values = [
@@ -361,7 +354,7 @@ const About = () => {
                 A carefully assembled team of specialists who care deeply about their craft and your success.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-12 md:gap-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-20 max-w-5xl mx-auto">
               {team.map((member, i) => (
                 <motion.div
                   key={member.name}

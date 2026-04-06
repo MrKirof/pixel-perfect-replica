@@ -77,11 +77,11 @@
 
 .team-card-wrapper .pc-card {
   height: auto;
-  max-height: 340px;
+  max-height: 420px;
 }
 
 .team-card-wrapper .pc-card-wrapper {
-  max-width: 240px;
+  max-width: 300px;
   margin: 0 auto;
 }
 
