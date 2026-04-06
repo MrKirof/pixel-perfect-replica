@@ -28,6 +28,7 @@ const queryClient = new QueryClient();
 const AppContent = () => {
   const { pathname } = useLocation();
   const [bookCallOpen, setBookCallOpen] = useState(false);
+  const [startProjectOpen, setStartProjectOpen] = useState(false);
   return (
     <>
       <FloatingRocks />
