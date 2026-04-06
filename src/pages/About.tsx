@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import farhanImg from "@/assets/farhan-rayyan.jpg";
+import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
