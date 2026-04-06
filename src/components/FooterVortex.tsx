@@ -242,16 +242,6 @@ const Meteor = ({ startAngle, yStart, speed, delay, size, seed }: MeteorProps) =
         <mesh geometry={rockGeo} scale={size * 1.1}>
           <meshBasicMaterial color="#ffaa22" transparent opacity={0.5} depthWrite={false} />
         </mesh>
-        {/* Plasma corona */}
-        <mesh scale={size * 2.5}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ff5500" transparent opacity={0.2} depthWrite={false} />
-        </mesh>
-        {/* Outer heat glow */}
-        <mesh scale={size * 4.5}>
-          <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#cc2200" transparent opacity={0.06} depthWrite={false} />
-        </mesh>
       </group>
 
       {/* Trail ribbon */}
