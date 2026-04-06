@@ -207,7 +207,7 @@ const Meteor = ({ cfg }: { cfg: MeteorCfg }) => {
           <bufferAttribute attach="attributes-size" array={trailSizes} count={TRAIL} itemSize={1} />
         </bufferGeometry>
         <pointsMaterial
-          size={0.1}
+          size={0.18}
           map={trailTex}
           color="#ff8833"
           transparent
