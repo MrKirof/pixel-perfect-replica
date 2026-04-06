@@ -176,20 +176,20 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     <>
       {/* Meteor head */}
       <group ref={headRef}>
-        {/* Rocky core */}
-        <mesh scale={size}>
-          <icosahedronGeometry args={[1, 1]} />
+        {/* Bright core */}
+        <mesh scale={size * 0.8}>
+          <sphereGeometry args={[1, 12, 12]} />
           <meshBasicMaterial color="#ffffff" />
         </mesh>
         {/* Inner glow */}
-        <mesh scale={size * 3}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ffaa44" transparent opacity={0.6} depthWrite={false} />
+        <mesh scale={size * 2}>
+          <sphereGeometry args={[1, 12, 12]} />
+          <meshBasicMaterial color="#ffcc66" transparent opacity={0.5} depthWrite={false} />
         </mesh>
-        {/* Outer glow */}
-        <mesh scale={size * 6}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ff6600" transparent opacity={0.2} depthWrite={false} />
+        {/* Outer haze */}
+        <mesh scale={size * 4}>
+          <sphereGeometry args={[1, 12, 12]} />
+          <meshBasicMaterial color="#ff6600" transparent opacity={0.12} depthWrite={false} />
         </mesh>
       </group>
 
