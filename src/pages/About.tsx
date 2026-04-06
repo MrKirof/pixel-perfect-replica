@@ -147,19 +147,19 @@ const About = () => {
                   transition={{ duration: 0.7, delay: 0.15 }}
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Director</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Founder</span>
                     <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
-                    FarHan <span className="text-gradient">Rayyan</span>
+                    Mareful <span className="text-gradient">Kirof</span>
                   </h2>
-                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Director & COO</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & CEO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
-                      As Director & COO of Kirof, FarHan Rayyan oversees operations, strategy, and delivery across all departments. He ensures the agency runs with precision and every client gets world-class results.
+                      Founded Kirof in 2013 with a simple belief: every business deserves design that doesn't just look good — it speaks and sells. Built the agency from the ground up as a one-person studio.
                     </p>
                     <p>
-                      His leadership has helped scale Kirof to a 20-person team delivering <span className="text-white font-semibold">3,000+ projects</span> across 14 countries — with zero missed deadlines.
+                      Today he leads a 20-person remote team across 3 continents, delivering <span className="text-white font-semibold">3,000+ projects</span> with zero missed deadlines — a record he takes personally.
                     </p>
                   </div>
                   {/* Quick stats */}
