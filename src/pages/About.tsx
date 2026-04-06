@@ -2,8 +2,7 @@ import { ArrowRight, ArrowUpRight, Globe, Users, Award, Trophy, Heart, Target, R
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
-import marefulImg1 from "@/assets/mareful-kirof-1.jpg";
-import marefulImg2 from "@/assets/mareful-kirof-2.jpg";
+import farhanImg from "@/assets/farhan-rayyan.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
@@ -21,7 +20,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 );
 
 const team = [
-  { name: "Mareful Kirof", role: "Founder & COO", handle: "marefulkirof", bio: "Founder and chief operations officer. Built Kirof from the ground up and oversees every aspect of the agency's operations and growth.", image: marefulImg1, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)" },
+  
   { name: "Sophia Chen", role: "Creative Director", handle: "sophiachen", bio: "10+ years shaping brands that win awards and hearts. Previously led design at two Y Combinator startups.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
   { name: "James Okafor", role: "Chief Financial Officer", handle: "jamesokafor", bio: "CPA with expertise in startup finance. Manages $8M+ in client revenue and internal operations.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #064e3b8c 0%, #10b98144 100%)", glowColor: "rgba(16, 185, 129, 0.5)" },
   { name: "Mia Patel", role: "Brand & Identity Lead", handle: "miapatel", bio: "Turns complex brand challenges into elegant visual systems. 1500+ brand projects delivered.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #831843c0 0%, #ec489944 100%)", glowColor: "rgba(236, 72, 153, 0.5)" },
@@ -126,26 +125,12 @@ const About = () => {
                     className="relative z-10 overflow-hidden rounded-lg"
                   >
                     <img
-                      src={marefulImg2}
-                      alt="Mareful Kirof — Founder & COO"
+                      src={farhanImg}
+                      alt="FarHan Rayyan — Director & COO"
                       className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  </motion.div>
-                  {/* Secondary image — floating offset */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 30, y: 20 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute -bottom-6 -right-6 md:-right-10 w-[45%] z-20 rounded-lg overflow-hidden border-2 border-background shadow-2xl"
-                  >
-                    <img
-                      src={marefulImg1}
-                      alt="Mareful Kirof"
-                      className="w-full aspect-square object-cover object-top"
-                    />
                   </motion.div>
                   {/* Decorative accent line */}
                   <div className="absolute -left-4 top-8 w-1 h-24 bg-accent/40 rounded-full" />
@@ -161,19 +146,19 @@ const About = () => {
                   transition={{ duration: 0.7, delay: 0.15 }}
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Founder</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Meet the Director</span>
                     <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
-                    Mareful <span className="text-gradient">Kirof</span>
+                    FarHan <span className="text-gradient">Rayyan</span>
                   </h2>
-                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & Chief Operations Officer</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Director & COO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
-                      Built Kirof from the ground up in 2013 as a one-person design studio. Today, he leads a 20-person remote team across 3 continents, overseeing every aspect of the agency's operations and growth.
+                      As Director & COO of Kirof, FarHan Rayyan oversees operations, strategy, and delivery across all departments. He ensures the agency runs with precision and every client gets world-class results.
                     </p>
                     <p>
-                      His obsession with craft and zero-compromise approach to quality has delivered <span className="text-white font-semibold">3,000+ projects</span> without a single missed deadline — a record he takes personally.
+                      His leadership has helped scale Kirof to a 20-person team delivering <span className="text-white font-semibold">3,000+ projects</span> across 14 countries — with zero missed deadlines.
                     </p>
                   </div>
                   {/* Quick stats */}
@@ -194,7 +179,7 @@ const About = () => {
                     className="magnetic-btn border border-white/20 text-white font-display text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 hover:border-accent hover:text-accent transition-all duration-500 group"
                     data-cursor-hover
                   >
-                    Work with Mareful
+                    Work with FarHan
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
@@ -372,7 +357,7 @@ const About = () => {
                 A carefully assembled team of specialists who care deeply about their craft and your success.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 md:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-12 md:gap-14">
               {team.map((member, i) => (
                 <motion.div
                   key={member.name}
