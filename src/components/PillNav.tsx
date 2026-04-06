@@ -40,6 +40,7 @@ const PillNav = ({
   initialLoadAnimation = true,
   ctaLabel,
   ctaHref,
+  onCtaClick,
 }: PillNavProps) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const location = useLocation();
