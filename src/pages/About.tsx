@@ -150,9 +150,9 @@ const About = () => {
                     <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight mb-4">
-                    Mareful <span className="text-gradient">Kirof</span>
+                    FarHan <span className="text-gradient">Rayyan</span>
                   </h2>
-                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & Chief Operations Officer</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Director & COO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
                       Built Kirof from the ground up in 2013 as a one-person design studio. Today, he leads a 20-person remote team across 3 continents, overseeing every aspect of the agency's operations and growth.
