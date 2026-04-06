@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import {
-  Sparkles, Layout, Code, BookOpen, Tag, Book, Film,
-  Megaphone, Search, Table, DollarSign, ArrowRight, ChevronDown, Layers, ExternalLink
+  Sparkles, Layout, Code, BookOpen, Tag, Book, Film, Video,
+  Megaphone, Search, Table, DollarSign, ArrowRight, ChevronDown, Layers, ExternalLink, BarChart3
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
@@ -109,6 +109,24 @@ const services = [
     deliverables: ["Financial Reports", "Invoice Templates", "Ledger Management", "Tax-Ready Docs"],
     example: "Arxfield. Managed accounts for 3 years, saving $50K.",
     color: "120 60% 40%",
+  },
+  {
+    icon: Video, title: "Video Production", number: "12",
+    desc: "End-to-end video production — from concept and scripting to shooting, editing, and final delivery.",
+    longDesc: "We produce cinematic brand videos, product demos, testimonials, and social content that captivate audiences and drive engagement.",
+    process: ["Creative Brief & Pre-production", "Scripting & Storyboarding", "Filming & Direction", "Post-production & Color Grading"],
+    deliverables: ["Raw Footage", "Edited Videos", "Social Cuts", "Thumbnail Designs", "Subtitles & Captions"],
+    example: "Zenith Labs. Brand film that boosted conversions by 65% on landing pages.",
+    color: "350 80% 55%",
+  },
+  {
+    icon: BarChart3, title: "Digital Marketing", number: "13",
+    desc: "Data-driven digital marketing strategies across paid ads, social media, email, and content.",
+    longDesc: "We build full-funnel digital marketing ecosystems — from awareness campaigns to retention strategies — all backed by analytics and continuous optimization.",
+    process: ["Audience Research & Segmentation", "Channel Strategy & Budget Planning", "Campaign Execution & A/B Testing", "Analytics, Reporting & Optimization"],
+    deliverables: ["Marketing Strategy Doc", "Ad Campaigns", "Email Sequences", "Social Media Calendar", "Performance Reports"],
+    example: "Orbitra. Multi-channel campaign that delivered 320% ROI in 90 days.",
+    color: "200 80% 50%",
   },
 ];
 

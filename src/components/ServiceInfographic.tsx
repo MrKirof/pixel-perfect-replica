@@ -529,6 +529,103 @@ const AccountsInfographic = ({ color, hovered }: { color: string; hovered: boole
   </svg>
 );
 
+/* ── 12: Video Production ── */
+const VideoInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* Camera body */}
+    <motion.rect x={40} y={35} width={80} height={55} rx={6} fill={`hsl(${color} / 0.06)`} stroke={`hsl(${color} / 0.25)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6, ease }}
+      style={{ transformOrigin: "80px 62px" }}
+    />
+    {/* Lens */}
+    <motion.circle cx={80} cy={58} r={18} fill="none" stroke={`hsl(${color} / 0.3)`} strokeWidth={1.5}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.3, duration: 0.5, ease }}
+      style={{ transformOrigin: "80px 58px" }}
+    />
+    <motion.circle cx={80} cy={58} r={10} fill={`hsl(${color} / 0.1)`} stroke={`hsl(${color} / 0.2)`} strokeWidth={1}
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4, duration: 0.5, ease }}
+      style={{ transformOrigin: "80px 58px" }}
+    />
+    {/* Play button */}
+    <motion.path d="M76 53 L86 58 L76 63 Z" fill={`hsl(${color} / 0.5)`}
+      animate={hovered ? { scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] } : {}}
+      transition={{ duration: 1.5, repeat: Infinity }}
+      style={{ transformOrigin: "80px 58px" }}
+    />
+    {/* Film reel strips */}
+    {[0, 1, 2, 3].map(i => (
+      <motion.rect key={i} x={140} y={38 + i * 14} width={30} height={10} rx={2}
+        fill={`hsl(${color} / ${0.08 + i * 0.04})`}
+        initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+        transition={{ delay: 0.6 + i * 0.1, duration: 0.4 }}
+        style={{ transformOrigin: `140px ${43 + i * 14}px` }}
+      />
+    ))}
+    {/* Timeline bar */}
+    <motion.rect x={30} y={105} width={140} height={4} rx={2} fill={`hsl(${color} / 0.1)`}
+      initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.8, duration: 0.5 }}
+      style={{ transformOrigin: "30px 107px" }}
+    />
+    <motion.rect x={30} y={105} width={90} height={4} rx={2} fill={`hsl(${color} / 0.3)`}
+      initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1, duration: 0.5 }}
+      style={{ transformOrigin: "30px 107px" }}
+    />
+    {/* Playhead */}
+    <motion.circle cx={120} cy={107} r={5} fill={`hsl(${color})`}
+      animate={hovered ? { cx: [60, 150, 60] } : { cx: 120 }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <Pulse color={color} cx={25} cy={30} r={3} delay={0.5} />
+  </svg>
+);
+
+/* ── 13: Digital Marketing ── */
+const DigitalMarketingInfographic = ({ color, hovered }: { color: string; hovered: boolean }) => (
+  <svg viewBox="0 0 200 140" className="w-full h-full">
+    {/* Rising bar chart */}
+    {[0, 1, 2, 3, 4].map(i => (
+      <motion.rect key={i} x={25 + i * 22} y={100 - (20 + i * 15)} width={16} height={20 + i * 15} rx={3}
+        fill={`hsl(${color} / ${0.1 + i * 0.06})`} stroke={`hsl(${color} / 0.2)`} strokeWidth={0.5}
+        initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
+        transition={{ delay: i * 0.12, duration: 0.5, ease }}
+        style={{ transformOrigin: `${33 + i * 22}px 100px` }}
+      />
+    ))}
+    {/* Growth arrow */}
+    <motion.path d="M30 85 L55 65 L77 50 L100 35 L120 22" fill="none" stroke={`hsl(${color})`} strokeWidth={2} strokeLinecap="round"
+      initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+      transition={{ delay: 0.8, duration: 0.8, ease }}
+    />
+    <motion.path d="M115 18 L122 22 L116 28" fill="none" stroke={`hsl(${color})`} strokeWidth={2} strokeLinecap="round"
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+    />
+    {/* Social/channel icons - circles */}
+    {[0, 1, 2].map(i => (
+      <motion.circle key={i} cx={150 + i * 18} cy={35 + i * 20} r={8}
+        fill={`hsl(${color} / 0.08)`} stroke={`hsl(${color} / 0.25)`} strokeWidth={1}
+        initial={{ scale: 0 }} animate={{ scale: 1 }}
+        transition={{ delay: 1 + i * 0.15, duration: 0.4, ease }}
+        style={{ transformOrigin: `${150 + i * 18}px ${35 + i * 20}px` }}
+      />
+    ))}
+    {/* Connection lines between channels */}
+    <FloatingLine color={color} x1={155} y1={42} x2={163} y2={50} delay={1.3} />
+    <FloatingLine color={color} x1={173} y1={62} x2={180} y2={70} delay={1.5} />
+    {/* Conversion funnel */}
+    <motion.path d="M140 90 L160 90 L155 110 L145 110 Z" fill={`hsl(${color} / 0.1)`} stroke={`hsl(${color} / 0.2)`} strokeWidth={1}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+    />
+    {/* Funnel drops */}
+    {[0, 1, 2].map(i => (
+      <motion.circle key={i} cx={150} cy={115 + i * 6} r={1.5} fill={`hsl(${color} / 0.4)`}
+        animate={hovered ? { y: [0, 8, 0], opacity: [0.4, 1, 0.4] } : {}}
+        transition={{ duration: 1.5, delay: i * 0.3, repeat: Infinity }}
+      />
+    ))}
+    <Pulse color={color} cx={30} cy={25} r={3} delay={0.2} />
+  </svg>
+);
+
 /* ── Map number to component ── */
 const infographicMap: Record<string, React.FC<{ color: string; hovered: boolean }>> = {
   "01": BrandInfographic,
@@ -542,6 +639,8 @@ const infographicMap: Record<string, React.FC<{ color: string; hovered: boolean 
   "09": SEOInfographic,
   "10": ExcelInfographic,
   "11": AccountsInfographic,
+  "12": VideoInfographic,
+  "13": DigitalMarketingInfographic,
 };
 
 interface ServiceInfographicProps {
