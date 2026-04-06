@@ -252,7 +252,8 @@ const Work = () => {
                     >
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={`${project.title} - ${project.category} by MrKirof`}
+                        loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
                       />
                       {/* Overlay */}

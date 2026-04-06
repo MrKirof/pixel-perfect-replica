@@ -273,6 +273,7 @@ const Blog = () => {
                       <img
                         src={article.image}
                         alt={article.title}
+                        loading="lazy"
                         className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                       />
                       <div className="absolute top-4 left-4">

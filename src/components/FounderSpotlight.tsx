@@ -59,7 +59,8 @@ const FounderSpotlight = () => {
                 <div className="w-[320px] h-[420px] md:w-[380px] md:h-[500px] overflow-hidden rounded-2xl">
                   <img
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face"
-                    alt="Mareful Kirof — Founder"
+                    alt="Mareful Kirof, Founder of MrKirof creative agency"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   {/* Overlay gradient */}

@@ -127,7 +127,8 @@ const About = () => {
                   >
                     <img
                       src={marefulFounderImg}
-                      alt="Mareful Kirof, Founder & CEO"
+                      alt="Mareful Kirof, Founder & CEO of MrKirof creative agency"
+                      loading="lazy"
                       className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                     />
                     {/* Overlay gradient */}
