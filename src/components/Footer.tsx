@@ -89,13 +89,11 @@ const Footer = () => (
               <span className="text-base text-foreground/75">Currently accepting projects</span>
             </section>
 
-            <Button asChild size="lg" className="h-12 w-fit rounded-full px-7 font-display text-base font-bold">
-              <Link to="/contact" data-cursor-hover>
+            <Button size="lg" className="h-12 w-fit rounded-full px-7 font-display text-base font-bold" data-cursor-hover onClick={() => window.dispatchEvent(new Event('open-start-project'))}>
                 Start a Project
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/20 transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
-              </Link>
             </Button>
           </div>
         </div>

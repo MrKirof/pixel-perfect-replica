@@ -172,14 +172,13 @@ const Navbar = () => {
                   transition={{ delay: 0.4 }}
                   className="mt-12"
                 >
-                  <Link
-                    to="/contact"
-                    onClick={() => setIsOpen(false)}
+                  <button
+                    onClick={() => { setIsOpen(false); window.dispatchEvent(new Event('open-start-project')); }}
                     className="bg-accent text-accent-foreground font-display font-bold text-base px-8 py-4 rounded-full inline-flex items-center gap-3"
                   >
                     Start a Project
                     <ArrowUpRight size={18} />
-                  </Link>
+                  </button>
                 </motion.div>
               </div>
             </motion.div>

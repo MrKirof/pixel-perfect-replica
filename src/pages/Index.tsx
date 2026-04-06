@@ -437,15 +437,15 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.45 }}
             >
-              <Link
-                to="/contact"
+              <button
+                onClick={() => window.dispatchEvent(new Event('open-start-project'))}
                 className="magnetic-btn relative bg-accent text-accent-foreground font-display font-extrabold px-8 py-3 rounded-full inline-flex items-center gap-3 text-base overflow-hidden group transition-all duration-500"
                 data-cursor-hover
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative z-10">Start a Project</span>
                 <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </button>
               <Link
                 to="/work"
                 className="magnetic-btn border border-border text-foreground font-display font-bold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:border-accent hover:text-accent transition-all duration-500 group"

@@ -44,6 +44,12 @@ const AppContent = () => {
   const [bookCallOpen, setBookCallOpen] = useState(false);
   const [startProjectOpen, setStartProjectOpen] = useState(false);
   const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
+
+  useEffect(() => {
+    const handler = () => setStartProjectOpen(true);
+    window.addEventListener('open-start-project', handler);
+    return () => window.removeEventListener('open-start-project', handler);
+  }, []);
   return (
     <>
       <ScrollToTop />

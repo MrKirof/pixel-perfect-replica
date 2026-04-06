@@ -12,6 +12,10 @@ const clients = [
 ];
 
 const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
+  const handleStartProject = () => {
+    if (onStartProject) onStartProject();
+    else window.dispatchEvent(new Event('open-start-project'));
+  };
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -90,7 +94,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </Link>
           <button
-            onClick={onStartProject}
+            onClick={handleStartProject}
             className="magnetic-btn border border-white/20 text-white font-display text-sm sm:text-base px-5 sm:px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-2 sm:gap-3 hover:border-accent hover:text-accent transition-all duration-500 ease-out"
             data-cursor-hover
           >

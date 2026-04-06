@@ -812,13 +812,13 @@ const Services = () => {
               Tell us about your project and we'll get back within 24 hours with a tailored proposal.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/contact"
+              <button
+                onClick={() => window.dispatchEvent(new Event('open-start-project'))}
                 className="bg-accent text-accent-foreground font-display font-bold px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity inline-flex items-center gap-2 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500"
                 data-cursor-hover
               >
                 Start a Conversation <ArrowRight size={16} />
-              </Link>
+              </button>
               <Link
                 to="/work"
                 className="border border-border text-foreground font-display font-bold px-6 py-2.5 rounded-full hover:border-accent/50 transition-colors inline-flex items-center gap-2"

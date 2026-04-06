@@ -463,13 +463,13 @@ const Work = () => {
             <p className="text-accent-foreground/60 font-body text-base mb-14 max-w-md mx-auto leading-relaxed">
               Let's discuss how we can bring your vision to life.
             </p>
-            <Link
-              to="/contact"
+            <button
+              onClick={() => window.dispatchEvent(new Event('open-start-project'))}
               className="magnetic-btn bg-background text-foreground font-display font-extrabold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_rgba(0,0,0,0.2)] transition-all duration-500 group"
               data-cursor-hover
             >
               Start a Conversation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
           </div>
         </section>
       </FadeIn>
