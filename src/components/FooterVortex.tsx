@@ -101,7 +101,7 @@ const OrbitParticles = () => {
 
 /* ── Main ── */
 const FooterVortex = () => (
-  <div className="relative h-[360px] w-full max-w-[380px]">
+  <div className="relative h-[320px] w-full max-w-[340px] overflow-hidden">
     <div
       className="absolute inset-0 rounded-full opacity-35"
       style={{
