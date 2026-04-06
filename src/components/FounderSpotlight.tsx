@@ -123,7 +123,7 @@ const FounderSpotlight = () => {
               </p>
               <p>
                 Starting as a one-person studio, he grew Kirof into a 20-person remote agency
-                spanning 13 disciplines — from brand identity and motion graphics to web development
+                spanning 18 disciplines — from brand identity and motion graphics to web development
                 and financial operations.
               </p>
               <p>

@@ -11,7 +11,7 @@ interface SEOHeadProps {
   children?: React.ReactNode;
 }
 
-const SITE_URL = "https://kirof.com";
+const SITE_URL = "https://mrkirof.com";
 const SITE_NAME = "MrKirof";
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
