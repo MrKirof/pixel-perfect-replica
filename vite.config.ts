@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
   preview: {
     host: true,
     port: 3000,
-    allowedHosts: ['mrkirof.com']
+    allowedHosts: ['mrkirof.com','www.mrkirof.com']
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
